@@ -1,5 +1,5 @@
 ---
-title: "Studies to Human visual seaching-Tasks Extended Abstract"
+title: "Studies on Human Visual Search Tasks: Extended Abstract"
 author:
   - "Maximilian Heinemann"
 date: today
@@ -18,7 +18,12 @@ number-sections: true
 
 # Code of Conduct {.unnumbered}
 
-Hier kommt euer Code of Conduct rein.
+## Umgang mit Feedback, unterschiedlichen Perspekbven und Meinungsverschiedenheiten.
+## Aufeilung der Arbeitslast.
+## Verhalten in Bezug auf vereinbarte und verpflichtende Termine.
+## Einhaltung der wissenschaclichen Integrität.
+## Verpflichtung zum Schutz von Daten und zur Wahrung ihrer Vertraulichkeit.
+## Nutzung und Kennzeichnung von KI-Tools
 
 # Einleitung
 
