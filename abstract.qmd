@@ -2,6 +2,7 @@
 title: "Studies on Human Visual Search Tasks: Extended Abstract"
 author:
   - "Maximilian Heinemann"
+  - "Lenja Ziske"
 date: today
 format:
   html: 
@@ -12,18 +13,41 @@ format:
 number-sections: true
 ---
 
-**GitHub Repository:** https://github.com/lenZi101/SMNF2026-GruppeA3  
+**GitHub Repository:** https://github.com/lenZi101/SMNF2026-GruppeA3
 **Für die Abgabe aktueller GitHub Hash:** SOME_HASH
 
+:::{.callout-note collapse="true"} 
+# Code of Conduct
+Alle Gruppenmitglieder verplichten sich zu diesem Code of Conduct.
 
-# Code of Conduct {.unnumbered}
+#### Feedback, Perspektiven und Entscheidungsfindung {.unnumbered}
+  * Feedback wird sachlich und konstruktiv formuliert.
+  * Perspektiven und Meinungen werden offen kommuniziert und münden in gemeinsamen Entscheidungen.
+  
+#### Aufgaben und Arbeitslast {.unnumbered}
+  * Aufgaben werden klar definiert und fair verteilt.
+  * Änderungen in der Einteilung oder Wünsche nach Unterstützung bzw. Zusammenarbeit werden offen geteilt.
+  * Arbeitsfortschritte und -zwischenschritte werden regelmäßig geteilt.
+  
+#### Vereinbarte und verpflichtende Termine {.unnumbered}
+  * Termine werden klar abgesprochen und werden eingehalten.
+  * Deadlines werden festgelegt und sind einzuhalten.
+  * Ergebnisse werden fristgerecht und in der vereinbarten Qualität abgegeben.
+  * Verpätungen werden möglichst früh kommuniziert.
 
-## Umgang mit Feedback, unterschiedlichen Perspekbven und Meinungsverschiedenheiten.
-## Aufeilung der Arbeitslast.
-## Verhalten in Bezug auf vereinbarte und verpflichtende Termine.
-## Einhaltung der wissenschaclichen Integrität.
-## Verpflichtung zum Schutz von Daten und zur Wahrung ihrer Vertraulichkeit.
-## Nutzung und Kennzeichnung von KI-Tools
+#### Wissenschaftliche Integrität {.unnumbered}
+  * Alle verwendeten Quellen werden korrekt und vollständig zitiert.
+  * Plagiate, Datenmanipulation und Ähnliches sind ausgeschlossen.
+
+#### Datenschutz und Vertraulichkeit {.unnumbered}
+  * Sensible Daten werden vertraulich behandelt.
+  * Daten werden nur für den vereinbarten Zweck genutzt und nicht weitergegeben.
+
+#### Nutzung und Kennzeichnung von KI-Tools {.unnumbered}
+  * KI-Tools werden ausschließlich im Rahmen der Vorgaben des Kurses genutzt.
+  * KI-erstellte Inhalte werden eindeutig und korrekt gekennzeichnet.
+  * Ergebnisse von KI-Tools werden kritisch geprüft und eingeordnet.
+:::
 
 # Einleitung
 
@@ -44,5 +68,3 @@ Beschreibung von Studie 2.
 # Diskussion
 
 Diskussion der Ergebnisse.
-
-
