@@ -5,7 +5,7 @@ author:
 date: today
 format:
   html: 
-   css: styles.css
+   css: style.css
   pdf:
     papersize: A4
     fontsize: 12pt
