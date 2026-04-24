@@ -1,26 +1,43 @@
 ---
-title: "abstract"
-format: html
-editor: visual
+title: "Studies to Human visual seaching-Tasks Extended Abstract"
+author:
+  - "Maximilian Heinemann"
+date: today
+format:
+  html: 
+   css: styles.css
+  pdf:
+    papersize: A4
+    fontsize: 12pt
+number-sections: true
 ---
 
-## Quarto
+**GitHub Repository:** https://github.com/lenZi101/SMNF2026-GruppeA3  
+**Für die Abgabe aktueller GitHub Hash:** SOME_HASH
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-## Running Code
+# Code of Conduct {.unnumbered}
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+Hier kommt euer Code of Conduct rein.
 
-```{r}
-1 + 1
-```
+# Einleitung
 
-You can add options to executable code like this
+Hier kommt später eure Einleitung rein.
 
-```{r}
-#| echo: false
-2 * 2
-```
+# Literaturübersicht
 
-The `echo: false` option disables the printing of code (only output is displayed).
+Hier kommt eure Literaturübersicht rein.
+
+# Studie 1
+
+Beschreibung von Studie 1.
+
+# Studie 2
+
+Beschreibung von Studie 2.
+
+# Diskussion
+
+Diskussion der Ergebnisse.
+
+
