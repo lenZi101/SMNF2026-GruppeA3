@@ -16,6 +16,7 @@ number-sections: true
 ---
 
 **GitHub Repository:** https://github.com/lenZi101/SMNF2026-GruppeA3
+
 **Für die Abgabe aktueller GitHub Hash:** SOME_HASH
 
 :::{.callout-note collapse="true"} 
