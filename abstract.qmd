@@ -1,5 +1,7 @@
 ---
 title: "Studies on Human Visual Search Tasks: Extended Abstract"
+bibliography: SMNF.bib
+csl: apa.csl
 author:
   - "Maximilian Heinemann"
   - "Lenja Ziske"
@@ -51,11 +53,54 @@ Alle Gruppenmitglieder verplichten sich zu diesem Code of Conduct.
 
 # Einleitung
 
-Hier kommt später eure Einleitung rein.
+
+## Welche Eigenschaften charakterisieren den wahrgenommenen visuellen Clutter bei SAR-Suchaufgaben?
+
+
+## Welche Faktoren beeinflussen bei KI-unterstützten SAR-Suchaufgaben Leistung, Interaktion mit dem System und User Experience?
 
 # Literaturübersicht
 
-Hier kommt eure Literaturübersicht rein.
+## Effort und Wahrnehmung
+
+Wickens [-@Wickens2014] beschreibt Effort als kognitiven Aufwand, der unter anderem beim visuellen Suchen, beim Beenden einer Suche und bei der Nutzung von Automation entsteht [pp. 2–5]. Für unsere Forschungsfrage ist das wichtig, weil wahrgenommener visueller Clutter nicht nur durch das Bild selbst entsteht. Es geht auch darum, wie anstrengend es für die Nutzer:innen ist, relevante Zielobjekte im Bild zu erkennen. Eine SAR-Szene kann also dann als cluttered wahrgenommen werden, wenn Personen, Bojen oder andere relevante Objekte nur mit hohem Suchaufwand vom Hintergrund getrennt werden können.
+
+Wickens [-@Wickens2021] geht zusätzlich auf Aufmerksamkeit in Multitasking- und Mensch-Automation-Situationen ein [pp. 410–413]. Das passt gut zu unserer Arbeit, weil Nutzer:innen bei einer KI-unterstützten SAR-Suche nicht nur das Bild betrachten. Sie müssen gleichzeitig die KI-Hinweise wahrnehmen, mit der eigenen Einschätzung abgleichen und daraus eine Entscheidung ableiten. Damit hilft die Quelle zu begründen, warum KI-Unterstützung nicht automatisch entlastet. Sie kann Aufmerksamkeit lenken, aber auch zusätzliche Koordination und Kontrolle notwendig machen.
+
+## Automatisierte Assistenz
+
+Parasuraman et al. [-@Parasuraman2000] ordnen Automation nach verschiedenen Aufgabenfunktionen ein: Informationsaufnahme, Informationsanalyse, Entscheidungsauswahl und Handlungsausführung. Das ist für unsere Arbeit hilfreich, weil sich KI-Assistenz dadurch genauer einordnen lässt. Sie unterstützt nicht einfach allgemein „die Suche“, sondern greift in bestimmte Teile der Aufgabe ein. Zum Beispiel kann sie relevante Bildbereiche hervorheben, Informationen vorstrukturieren oder eine Entscheidung vorbereiten.
+
+Besonders wichtig sind für uns die Bewertungskriterien der Quelle. Parasuraman et al. nennen Mental Workload und Situation Awareness als zentrale Folgen für die menschliche Leistung [p. 290]. Außerdem nennen sie Automation Reliability [p. 291] und die Kosten von Entscheidungs- oder Handlungsfehlern [p. 292]. Damit lässt sich gut begründen, warum KI-Assistenz nicht nur über Trefferquoten bewertet werden sollte. Für unsere Forschungsfrage ist auch wichtig, ob die Unterstützung die Nutzer:innen entlastet, ob sie den Überblick verbessert oder ob falsche Hinweise neue Probleme erzeugen.
+
+Gruner et al. [-@Gruner2025] übertragen diese Fragen direkt auf maritime SAR-Hubschrauberoperationen. Der Fokus liegt auf KI-gestützter Personendetektion, Workload-Verteilung und kognitiven Engpässen [p. 23]. Diese Quelle ist für unsere Arbeit besonders relevant, weil sie genau in den SAR-Kontext führt. Sie zeigt, dass nicht nur die reine Erkennungsleistung der KI zählt. Entscheidend ist auch, wie die KI die Aufgaben der Crew, die Aufmerksamkeit und die Entscheidungsprozesse verändert.
+
+Gruner et al. [-@Gruner2026a] vergleichen verschiedene Cueing-Formen und Displaytypen, zum Beispiel indirekte Hinweise, Bounding Boxes und subtraktive Darstellungen. Das ist für beide Forschungsfragen wichtig. Solche Hinweise können visuellen Clutter reduzieren, wenn sie Nutzer:innen schneller zu relevanten Bildbereichen führen. Gleichzeitig können sie aber auch neuen Clutter erzeugen, wenn zusätzliche Markierungen oder Overlays das Bild unübersichtlicher machen. Dadurch wird deutlich, dass nicht nur die KI-Erkennung selbst wichtig ist, sondern auch die Art, wie die Hinweise dargestellt werden.
+
+Chavaillaz et al. [-@Chavaillaz2018] zeigen, dass direkte Hinweise Detektionsleistung und Reaktionszeit verbessern können. Außerdem hängt hohe Automation Reliability mit höherem Vertrauen zusammen. Für unsere Arbeit folgt daraus, dass die Wirkung der KI stark davon abhängt, wie direkt, verständlich und zuverlässig ihre Hinweise sind. Ein Hinweis ist also nicht automatisch hilfreich, nur weil er vorhanden ist.
+
+Bartlett und McCarley [-@Bartlett2017] zeigen, dass Nutzer:innen automatisierte Entscheidungshilfen auch bei hoher Reliabilität nicht automatisch optimal nutzen [p. 16]. Das ist für unsere zweite Forschungsfrage wichtig, weil die technische Leistung eines Systems nicht direkt mit der tatsächlichen Mensch-KI-Leistung gleichgesetzt werden kann. Selbst ein gutes System kann anders genutzt werden, als es theoretisch optimal wäre.
+
+Parasuraman und Manzey [-@Parasuraman2010] beschreiben Automation Bias und Complacency als Risiken automatisierter Assistenz [p. 381]. Nutzer:innen können KI-Hinweisen zu stark vertrauen oder eigene Kontrollprozesse reduzieren. Für SAR-Suchaufgaben ist das besonders kritisch, weil übersehene Personen oder falsch priorisierte Suchbereiche schwerwiegende Folgen haben können.
+
+Rieger und Manzey [-@Rieger2022] zeigen, dass Zeitdruck die Leistung verschlechtern kann, hochzuverlässige Assistenzsysteme aber trotzdem Vorteile gegenüber manueller Arbeit bieten [p. 16]. Gleichzeitig wird Automation nicht immer optimal genutzt. Für unsere Arbeit ist das relevant, weil SAR-Suche häufig unter Zeitdruck stattfindet. Die KI muss daher nicht nur zuverlässig sein, sondern auch so eingebunden werden, dass sie in stressigen Situationen wirklich hilft.
+
+## Clutter
+
+Moacdieh und Sarter [-@Moacdieh2015a] beschreiben Display Clutter als mehrdimensionales Phänomen. Clutter entsteht nicht nur dadurch, dass viele Elemente im Bild vorhanden sind. Auch visuelle Ähnlichkeit, schlechte Organisation, irrelevante Informationen und hohe Anforderungen an Aufmerksamkeit spielen eine Rolle. Für unsere erste Forschungsfrage liefert die Quelle damit wichtige Eigenschaften, mit denen wahrgenommener visueller Clutter beschrieben werden kann. Dazu gehören Dichte, Struktur, Ziel-Hintergrund-Ähnlichkeit, Ablenkung, Kontrast, Textur und Übersichtlichkeit.
+
+Die Quelle beschreibt außerdem verschiedene Messansätze für Clutter. Bildbasierte Verfahren erfassen zum Beispiel Objektanzahl, Kantendichte, Farbvariation, Kontrast, Textur, Entropie und Feature Congestion [pp. 8–9]. Für SAR-Bilder lässt sich daraus ableiten, welche Bildmerkmale Clutter verstärken können. Dazu gehören zum Beispiel Wellen, Reflexionen, kleinteilige Strukturen, niedriger Kontrast und eine geringe Trennung zwischen Person und Hintergrund.
+
+Für unsere Forschungsfrage reicht es aber nicht, nur objektive Bildmerkmale zu betrachten. Entscheidend ist, wie Nutzer:innen die Szene wahrnehmen. Deshalb sollten subjektive Einschätzungen mit Leistungsmaßen kombiniert werden, zum Beispiel Suchzeit, Fehlerzahl, Trefferquote, Reaktionszeit und Detektionsleistung. So lässt sich besser erfassen, welche Bild- und Displayeigenschaften tatsächlich als störend wahrgenommen werden.
+
+## Analyse-Methoden
+
+Macmillan und Creelman [-@Macmillan2004] liefern die Grundlage für Signal Detection Theory. Relevant sind vor allem Sensitivität im Yes-No-Experiment [p. 3], Response Bias [p. 27] und ROC-Analysen [p. 51]. Für unsere Auswertung ist das wichtig, weil damit untersucht werden kann, ob KI-Assistenz wirklich die Erkennungsleistung verbessert oder ob sie vor allem die Entscheidungstendenz verändert.
+
+Stanislaw und Todorov [-@Stanislaw1999] erklären die Berechnung von Trefferquote, Fehlalarmrate, Sensitivität und Bias. Für KI-unterstützte SAR-Suche ist diese Unterscheidung wichtig. Eine KI-Hilfe kann zum Beispiel dazu führen, dass Nutzer:innen häufiger „Ziel vorhanden“ entscheiden. Dadurch können mehr Treffer entstehen, aber auch mehr Fehlalarme.
+
+
+## Eigene Quellen
 
 # Studie 1
 
