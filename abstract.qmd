@@ -1,5 +1,8 @@
 ---
 title: "Studies on Human Visual Search Tasks: Extended Abstract"
+lang: de
+bibliography: SMNF.bib
+csl: apa.csl
 author:
   - "Maximilian Heinemann"
   - "Lenja Ziske"
@@ -14,48 +17,76 @@ number-sections: true
 ---
 
 **GitHub Repository:** https://github.com/lenZi101/SMNF2026-GruppeA3
+
 **Für die Abgabe aktueller GitHub Hash:** SOME_HASH
 
-:::{.callout-note collapse="true"} 
+::: {.callout-note collapse="true"}
 # Code of Conduct
+
 Alle Gruppenmitglieder verplichten sich zu diesem Code of Conduct.
 
 #### Feedback, Perspektiven und Entscheidungsfindung {.unnumbered}
-  * Feedback wird sachlich und konstruktiv formuliert.
-  * Perspektiven und Meinungen werden offen kommuniziert und münden in gemeinsamen Entscheidungen.
-  
+
+- Feedback wird sachlich und konstruktiv formuliert.
+- Perspektiven und Meinungen werden offen kommuniziert und münden in gemeinsamen Entscheidungen.
+
 #### Aufgaben und Arbeitslast {.unnumbered}
-  * Aufgaben werden klar definiert und fair verteilt.
-  * Änderungen in der Einteilung oder Wünsche nach Unterstützung bzw. Zusammenarbeit werden offen geteilt.
-  * Arbeitsfortschritte und -zwischenschritte werden regelmäßig geteilt.
-  
+
+- Aufgaben werden klar definiert und fair verteilt.
+- Änderungen in der Einteilung oder Wünsche nach Unterstützung bzw. Zusammenarbeit werden offen geteilt.
+- Arbeitsfortschritte und -zwischenschritte werden regelmäßig geteilt.
+
 #### Vereinbarte und verpflichtende Termine {.unnumbered}
-  * Termine werden klar abgesprochen und werden eingehalten.
-  * Deadlines werden festgelegt und sind einzuhalten.
-  * Ergebnisse werden fristgerecht und in der vereinbarten Qualität abgegeben.
-  * Verpätungen werden möglichst früh kommuniziert.
+
+- Termine werden klar abgesprochen und werden eingehalten.
+- Deadlines werden festgelegt und sind einzuhalten.
+- Ergebnisse werden fristgerecht und in der vereinbarten Qualität abgegeben.
+- Verpätungen werden möglichst früh kommuniziert.
 
 #### Wissenschaftliche Integrität {.unnumbered}
-  * Alle verwendeten Quellen werden korrekt und vollständig zitiert.
-  * Plagiate, Datenmanipulation und Ähnliches sind ausgeschlossen.
+
+- Alle verwendeten Quellen werden korrekt und vollständig zitiert.
+- Plagiate, Datenmanipulation und Ähnliches sind ausgeschlossen.
 
 #### Datenschutz und Vertraulichkeit {.unnumbered}
-  * Sensible Daten werden vertraulich behandelt.
-  * Daten werden nur für den vereinbarten Zweck genutzt und nicht weitergegeben.
+
+- Sensible Daten werden vertraulich behandelt.
+- Daten werden nur für den vereinbarten Zweck genutzt und nicht weitergegeben.
 
 #### Nutzung und Kennzeichnung von KI-Tools {.unnumbered}
-  * KI-Tools werden ausschließlich im Rahmen der Vorgaben des Kurses genutzt.
-  * KI-erstellte Inhalte werden eindeutig und korrekt gekennzeichnet.
-  * Ergebnisse von KI-Tools werden kritisch geprüft und eingeordnet.
+
+- KI-Tools werden ausschließlich im Rahmen der Vorgaben des Kurses genutzt.
+- KI-erstellte Inhalte werden eindeutig und korrekt gekennzeichnet.
+- Ergebnisse von KI-Tools werden kritisch geprüft und eingeordnet.
 :::
 
 # Einleitung
 
-Hier kommt später eure Einleitung rein.
+## Welche Eigenschaften charakterisieren den wahrgenommenen visuellen Clutter bei SAR-Suchaufgaben?
+
+## Welche Faktoren beeinflussen bei KI-unterstützten SAR-Suchaufgaben Leistung, Interaktion mit dem System und User Experience?
 
 # Literaturübersicht
 
-Hier kommt eure Literaturübersicht rein.
+## Kontext: Search and Rescue
+
+Maritime Search and Rescue (SAR) Operationen stellen vielfältige und hohe Anforderungen an involvierte Menschen und Technologien. Personendetektion in Luftaufnahmen ist essentieller Teil der SAR-Suchaufgaben und fordert schnelle und präzise Entscheidungen, die durch Arbeitsbelastung und Umweltbedingungen beeinträchtigt werden [vgl. @martinez-esteso2025]. Mit der kontinuierlichen Weiterentwicklung automatisierter Objekterkennung untersuchen @Gruner2025 den Einsatz von unterstützender Künstlicher Intelligenz (KI) in maritimen SAR-Hubschrauberoperationen. Die Autoren untersuchen die Arbeitsbelastung der Crew, ihre Verteilung und die Auswirkungen der KI-Unterstützung auf Aufmerksamkeit und Entscheidungsprozesse in etwaigen kognitiven Engpässen bei der Personendetektion [@Gruner2025, S. 33].
+
+## Clutter
+
+Sowohl in KI-gestützter Bildverarbeitung als auch in der menschlichen Objekterkennung wirkt sich Clutter negativ auf die Leistung aus. @Moacdieh2015a beschreiben Display Clutter als mehrdimensionales Phänomen, das durch Dichte, visuelle Ähnlichkeit, schlechte Organisation, irrelevante Informationen und hohe Aufmerksamkeitsanforderungen entsteht und damit über reine Bildeigenschaften hinausgeht. Für die erste Forschungsfrage liefert die Quelle zentrale Dimensionen, anhand derer wahrgenommener visueller Clutter beschreibbar und messbar wird. Ergänzend differenzieren @beck2010 zwischen globalem Clutter, der Informationsdichte im gesamten Suchfeld, und lokalem Clutter in direkter Nähe eines Zielobjekts. Besonders lokaler Clutter verlängert Suchzeiten erheblich, wobei nicht die Anzahl der globalen Objekte, sondern die Objektdichte entscheidend ist. Eine hohe Salienz des Zielobjekts kann den negativen Effekt dabei fast vollständig ausgleichen, was für die Gestaltung von KI-Hinweisen unmittelbar relevant ist.
+
+@Wickens2014 ergänzt die Perspektive um den kognitiven Suchaufwand. Eine SAR-Szene wird auch dann als cluttered erlebt, wenn relevante Objekte nur mit hoher Anstrengung vom Hintergrund getrennt werden können [-@Wickens2014, S. 2–5]. Für die Operationalisierung bieten @Moacdieh2015a bildbasierte Messverfahren wie Kantendichte, Farbvariation, Kontrast, Textur und Feature Congestion, die mit subjektiven Einschätzungen und Leistungsmaßen wie Suchzeit, Trefferquote und Reaktionszeit kombiniert ein ganzheitliches Bild der Clutterwahrnehmung ergeben können. Für SAR-Bilder lässt sich daraus ableiten, dass Bildmerkmale, wie etwa Wellen, Reflexionen, kleinteilige Strukturen, niedriger Kontrast und eine geringe Trennung zwischen Person und Hintergrund den wahrgenommenen Clutter verstärken können [vgl. @martinez-esteso2025]. @Gruner2026a zeigen darüber hinaus, dass verschiedene Cueing-Formen und Displaytypen relevante Auswirkungen auf Clutterwahrnehmung und KI-Interaktion haben können, womit die Darstellungsform der KI-Hinweise als relevant für die erste wie zweite Forschungsfrage ist.
+
+## KI-Assistenz und Automation
+
+Die Wirkung von KI-Assistenz auf Leistung und Interaktion hängt von mehreren zusammenhängenden Faktoren ab. @Parasuraman2000 ordnen Automation nach Aufgabenfunktionen wie Informationsaufnahme, -analyse, Entscheidungsauswahl und Handlungsausführung, und nutzen Mental Workload, Situation Awareness sowie Automation Reliability als zentrale Bewertungsgrößen [-@Parasuraman2000, S. 290–292]. Für die zweite Forschungsfrage folgt daraus, dass KI-Assistenz nicht allein über Trefferquoten bewertet werden sollte, sondern auch danach, ob sie kognitiv entlastet, den Überblick verbessert und ob fehlerhafte Hinweise neue Probleme erzeugen.
+
+@Chavaillaz2018 zeigen, dass direkte Hinweise Detektionsleistung und Reaktionszeit verbessern und dass hohe Reliabilität mit stärkerem Vertrauen korreliert. Wie direkt, verständlich und zuverlässig KI-Hinweise gestaltet sind, entscheidet damit maßgeblich über ihre Wirksamkeit. @kaber2004 zeigen zudem, dass verschiedene Automationsniveaus sich unterschiedlich auf Leistung, Situation Awareness und Arbeitsbelastung auswirken. Dies wird auch durch neuere Meta- und Feldstudien gestützt [@onnasch2014; @balfe2015], und deutet an, dass Automationsniveau und Aufgabenverteilung zwischen Mensch und System sorgfältig abgestimmt werden müssen. @Wickens2021 ergänzt, dass KI-Unterstützung in Multitasking-Situationen nicht automatisch entlastet, sondern zusätzliche Koordination und Kontrolle erfordern kann [-@Wickens2021, S. 410–413]. @Rieger2022 zeigen, dass Zeitdruck die Leistung verschlechtert, hochzuverlässige Systeme aber trotzdem Vorteile gegenüber manueller Arbeit bieten können. Da SAR-Suche häufig unter Zeitdruck stattfindet, ist dieses Ergebnis in der Untersuchung beeinflussender Faktoren zu berücksichtugen.
+
+Gleichzeitig birgt KI-Unterstützung spezifische Risiken, die für SAR-Kontexte besonders relevant sind. @Parasuraman2010 beschreiben Automation Bias und Complacency als Folge zu starken Vertrauens in automatisierte Systeme, das eigene Kontrollprozesse reduziert [-@Parasuraman2010, S. 381]. Da übersehene Personen oder falsch priorisierte Suchbereiche in SAR-Einsätzen schwerwiegende Folgen haben können, ist dieses Risiko hier besonders kritisch zu gewichten. @Bartlett2017 zeigen ergänzend, dass selbst zuverlässige Systeme nicht automatisch optimal genutzt werden, sodass Systemleistung und tatsächliche Mensch-KI-Leistung sich erheblich unterscheiden können. Chen et al. @chen2018 adressieren diese Risiken mit dem SAT-Modell, das KI-Systeme auf drei Ebenen zur Transparenz über Ziele, Motivationen und Projektionen verpflichtet. Der Einsatz des Modells zeigte verbesserte Vertrauenseinschätzung, höhere Leistung und bessere Situation Awareness bei unveränderter Arbeitsbelastung. Besonders die zweite Ebene Faktoren für Complacency und Automation Bias reduzieren. Das erweiterte Dynamische SAT-Modell integriert zusätzlich bidirektionale Transparenz und direkte Eingriffsmöglichkeiten auf den Agenten. Für KI-gestützte SAR-Suche kann dies ein entscheidender Faktor in effektiver Interaktion und verbesserter Leistung sein.
+
+Für die statistische Auswertung beider Forschungsfragen bieten @Macmillan2004 sowie @Stanislaw1999 die Grundlage durch Signal Detection Theory. Sensitivität, Response Bias und ROC-Analysen erlauben es, zwischen echter Erkennungsleistung und veränderter Entscheidungstendenz zu unterscheiden, eine Unterscheidung, die für die Bewertung von KI-Assistenz zentral ist, da erhöhte Trefferquoten auch auf eine generell erhöhte Antwortbereitschaft zurückgehen können, ohne dass die eigentliche Detektionsleistung gestiegen ist.
 
 # Studie 1
 
