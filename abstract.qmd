@@ -18,7 +18,7 @@ number-sections: true
 
 **GitHub Repository:** https://github.com/lenZi101/SMNF2026-GruppeA3
 
-**Für die Abgabe aktueller GitHub Hash:** SOME_HASH
+**Für die Abgabe aktueller GitHub Hash:** a73a8a8dfc76a40787f23eb0449157c26bd115ca
 
 ::: {.callout-note collapse="true"}
 # Code of Conduct
