@@ -91,13 +91,18 @@ Für die statistische Auswertung beider Forschungsfragen bieten @Macmillan2004 s
 
 # Qualitative Studie
 
+## Methode
 Um die Eigenschaften visuellen Clutter's in SAR Kontexten, genauer zu verstehen, bietet es sich an sich mit den Subjektiven Wahrnehmungen Einzelner Probanden zu befassen. Denn Objektiv messbare Eigenschaften die die Komplexität von Bildern beschreiben, wie Kantendichte oder Farbvariation, spielen zwar eine wichtige Rolle für wahrgenommenen Clutter können aber nicht jeden Aspekt beschreiben. @Moacdieh2015a Um diese Diskrepanz besser zu verstehen und eventuelle zusätzliche Eigenschaften zu benennen, haben wir einen Qualitative Studie durchgeführt.
 
 In dieser Studie haben wir ein geleitetes Interview mit verschidenen Probanten durchgeführt, in dessen Verlauf den Teilnehmenden Acht Monochrme Bilder aus dem Maritimen-SAR Kontext präsentiert wurden. Diese sollten zuerst durch "lautes Denken" und anschließend durch eine Bewertung der Unübersichtlichkeit auf einer Skala von 1-5 beschriben werden. Die Interviews wurden Aufgenommen und anschließend Anonymisiert und Semantisch Transskibiert. Zusätzlich musste jeder Teilnehmende einen Screening Fragebogen beantworten in dem die bisherige Erfahrung, Alter und Geschlecht erhoben wurden.
 
-Zur Analyse wurden die Transskripte der Interviews  mithilfe von MAXQDA auf Kategorien untersucht und Thematische Zusammenhänge hergestellt.
+Zur Analyse wurden die Transskripte der Interviews  mithilfe von MaxQDA auf Kategorien untersucht und Thematische Zusammenhänge hergestellt.
 
+## Ergebinsse
+Mit einer Stichprobe von 4 Interviews verteilt über die Erfahrungslevel keine bis wenig, und einem durchschnittlichen Alter unter 30 wurde nur eine kleiner Teil der möglichen Zielgruppe repräsentiert.
+Trotzdem lassen sich aus Qualitativen Studien oft auch aus keinen Stichproben wichtige Erkenntnisse ziehen.
 
+### Sceening Fragebogen:
 ```{r}
 #| label: fig-exp
 #| echo: false
@@ -158,6 +163,85 @@ ggplot(age_data, aes(x = factor(age))) +
   ) +
   theme_minimal()
 ```
+
+### Themen Analyse
+Kategorie | Beispiel | Erkärung | Anzahl|
+----------|----------|----------|-------:
+Perspektive | | |
+Kantendichte |  |  |
+Textur |  |  |
+Kontrast |  | |
+Farbvariation|  | |
+
+### Aufgaben Ergebnisse
+```{r}
+#| label: fig-card-Sort
+#| echo: false
+#| warning: false
+#| fig-cap: Durchschnittliche Karten Reihenfolge
+
+library(ggplot2)
+library(tidyverse)
+
+order1 <- c(6,4,7,1,5,3,2)
+
+
+cards <- c("Symmetrie","Vorhersagbarkeit","Farbvarianz","Kantendichte","Segmentierung","Verdeckung","Überfüllung")
+
+card_data <- data.frame(
+  card = cards,
+  order1 = order1
+)
+
+# Durchschnitt berechnen
+card_data <- card_data %>%
+  mutate(avg_order = rowMeans(across(starts_with("order"))))
+
+# Plot
+ggplot(card_data, aes(x = reorder(card, avg_order), y = avg_order)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Durchschnittliche Karten Reihenfolge",
+    x = "Begriff",
+    y = "Durchschnittliche Position"
+  ) +
+  theme_minimal()
+```
+```{r}
+#| label: fig-pic-ranks
+#| echo: false
+#| warning: false
+#| fig-cap: Bild Unübersichtlichkeit
+
+library(ggplot2)
+library(tidyverse)
+
+ranks1 <- c(3,1,5,1,3,1,4,2)
+ranks2 <- c(2,3,4,4,5,3,1,2)
+
+pics <- c("Bild 1","Bild 2","Bild 3","Bild 4","Bild 5","Bild 6","Bild 7","Bild 8")
+
+rank_data <- data.frame(
+  pic = pics,
+  ranks1 = ranks1,
+  ranks2 = ranks2
+)
+
+# Durchschnitt berechnen
+rank_data <- rank_data %>%
+  mutate(avg_rank = rowMeans(across(starts_with("ranks"))))
+
+# Plot
+ggplot(rank_data, aes(x = pic, y = avg_rank)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Durchschnittlicher Bild Rang",
+    x = " ",
+    y = "Unübersichtlichkeit (1-5)"
+  ) +
+  theme_minimal()
+```
+
 # Studie 2
 
 Beschreibung von Studie 2.
