@@ -93,10 +93,71 @@ Für die statistische Auswertung beider Forschungsfragen bieten @Macmillan2004 s
 
 Um die Eigenschaften visuellen Clutter's in SAR Kontexten, genauer zu verstehen, bietet es sich an sich mit den Subjektiven Wahrnehmungen Einzelner Probanden zu befassen. Denn Objektiv messbare Eigenschaften die die Komplexität von Bildern beschreiben, wie Kantendichte oder Farbvariation, spielen zwar eine wichtige Rolle für wahrgenommenen Clutter können aber nicht jeden Aspekt beschreiben. @Moacdieh2015a Um diese Diskrepanz besser zu verstehen und eventuelle zusätzliche Eigenschaften zu benennen, haben wir einen Qualitative Studie durchgeführt.
 
-In dieser Studie haben wir ein geleitetes Interview mit verschidenen Probanten durchgeführt, in dessen Verlauf den Teilnehmenden Acht Monochrme Bilder aus dem Maritimen-SAR Kontext präsentiert wurden. Diese sollten zuerst durch "lautes Denken" und anschließend durch eine Bewertung der Unübersichtlichkeit auf einer Skala von 1-5 beschriben werden. Die Interviews wurden Aufgenommen und anschließend Anonymisiert und Semantisch Transskibiert. Zusätzlich musste jeder Teilnehmende einen Screening Fragebogen beantworten in dem die bisherige Erfahrung alter und Geschlecht erfragt wurden.
+In dieser Studie haben wir ein geleitetes Interview mit verschidenen Probanten durchgeführt, in dessen Verlauf den Teilnehmenden Acht Monochrme Bilder aus dem Maritimen-SAR Kontext präsentiert wurden. Diese sollten zuerst durch "lautes Denken" und anschließend durch eine Bewertung der Unübersichtlichkeit auf einer Skala von 1-5 beschriben werden. Die Interviews wurden Aufgenommen und anschließend Anonymisiert und Semantisch Transskibiert. Zusätzlich musste jeder Teilnehmende einen Screening Fragebogen beantworten in dem die bisherige Erfahrung, Alter und Geschlecht erhoben wurden.
 
-Zur Analyse wurden die Transskripte der Interviews  mithilfe von MAXQDA auf Kategorien untersucht und Thematische Zusammenhänge hergestellt. 
+Zur Analyse wurden die Transskripte der Interviews  mithilfe von MAXQDA auf Kategorien untersucht und Thematische Zusammenhänge hergestellt.
 
+
+```{r}
+#| label: fig-exp
+#| echo: false
+#| warning: false
+#| fig-cap: Erfahrungslevel
+
+library(ggplot2)
+exp_lvls <- c(0,0)
+# Namen der Levels
+exp_names <- c(
+  "keine",
+  "wenig",
+  "mäßig",
+  "umfangreiche"
+)
+
+# Zahlen in Text umwandeln
+experience <- exp_names[exp_lvls + 1]
+
+# Dataframe
+exp_data <- data.frame(
+  Person = 1:length(experience),
+  Erfahrung = experience
+)
+
+# Plot
+ggplot(exp_data, aes(x = Erfahrung)) +
+  geom_bar(fill = "steelblue") +
+  labs(
+    title = "Verteilung der Erfahrungslevel",
+    x = "Erfahrungslevel",
+    y = "Anzahl"
+  ) +
+  theme_minimal()
+```
+```{r}
+#| label: fig-age
+#| echo: false
+#| warning: false
+#| fig-cap: Altersverteilung
+
+library(ggplot2)
+
+ages <- c(25)
+
+# Dataframe erstellen
+age_data <- data.frame(
+  age = ages
+)
+
+# Plot
+ggplot(age_data, aes(x = factor(age))) +
+  geom_bar(fill = "steelblue") +
+  labs(
+    title = "Altersverteilung",
+    x = "Alter",
+    y = "Anzahl"
+  ) +
+  theme_minimal()
+```
 # Studie 2
 
 Beschreibung von Studie 2.
