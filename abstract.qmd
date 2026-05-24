@@ -94,9 +94,9 @@ Für die statistische Auswertung beider Forschungsfragen bieten @Macmillan2004 s
 ## Methode
 Um die Eigenschaften visuellen Clutter's in SAR Kontexten, genauer zu verstehen, bietet es sich an sich mit den Subjektiven Wahrnehmungen Einzelner Probanden zu befassen. Denn Objektiv messbare Eigenschaften die die Komplexität von Bildern beschreiben, wie Kantendichte oder Farbvariation, spielen zwar eine wichtige Rolle für wahrgenommenen Clutter können aber nicht jeden Aspekt beschreiben. @Moacdieh2015a Um diese Diskrepanz besser zu verstehen und eventuelle zusätzliche Eigenschaften zu benennen, haben wir einen Qualitative Studie durchgeführt.
 
-In dieser Studie haben wir ein geleitetes Interview mit verschidenen Probanten durchgeführt, in dessen Verlauf den Teilnehmenden Acht Monochrme Bilder aus dem Maritimen-SAR Kontext präsentiert wurden. Diese sollten zuerst durch "lautes Denken" und anschließend durch eine Bewertung der Unübersichtlichkeit auf einer Skala von 1-5 beschriben werden. Die Interviews wurden Aufgenommen und anschließend Anonymisiert und Semantisch Transskibiert. Zusätzlich musste jeder Teilnehmende einen Screening Fragebogen beantworten in dem die bisherige Erfahrung, Alter und Geschlecht erhoben wurden.
+In dieser Studie haben wir ein geleitetes Interview mit verschiedenen Probanden durchgeführt, in dessen Verlauf den Teilnehmenden Acht Monochrme Bilder aus dem Maritimen-SAR Kontext präsentiert wurden. Diese sollten zuerst durch "lautes Denken" und anschließend durch eine Bewertung der Unübersichtlichkeit auf einer Skala von 1-5 beschrieben werden. Die Interviews wurden Aufgenommen und anschließend Anonymisiert und Semantisch Transskibiert. Zusätzlich musste jeder Teilnehmende einen Screening Fragebogen beantworten in dem die bisherige Erfahrung, Alter und Geschlecht erhoben wurden.
 
-Zur Analyse wurden die Transskripte der Interviews  mithilfe von MaxQDA auf Kategorien untersucht und Thematische Zusammenhänge hergestellt.
+Zur Führung durchs Interview und der Präsentation der Bilder un Aufgaben wurde Sowohl ein eigens dafür geschriebenes Tool als auch analoge Materialien verwendet.Die Analyse wurde durch die Transskripte der Interviews mithilfe von MaxQDA in Anlehnung an die Thematische Analyse nach Braun und Clarke durchführt.
 
 ## Ergebinsse
 Mit einer Stichprobe von 4 Interviews verteilt über die Erfahrungslevel keine bis wenig, und einem durchschnittlichen Alter unter 30 wurde nur eine kleiner Teil der möglichen Zielgruppe repräsentiert.
@@ -184,13 +184,14 @@ library(ggplot2)
 library(tidyverse)
 
 order1 <- c(6,4,7,1,5,3,2)
-
+order2 <- c(3,5,6,4,2,7,1)
 
 cards <- c("Symmetrie","Vorhersagbarkeit","Farbvarianz","Kantendichte","Segmentierung","Verdeckung","Überfüllung")
 
 card_data <- data.frame(
   card = cards,
-  order1 = order1
+  order1 = order1,
+  order2 = order2
 )
 
 # Durchschnitt berechnen
@@ -241,6 +242,7 @@ ggplot(rank_data, aes(x = pic, y = avg_rank)) +
   ) +
   theme_minimal()
 ```
+
 
 # Studie 2
 
