@@ -89,9 +89,13 @@ Gleichzeitig birgt KI-Unterstützung spezifische Risiken, die für SAR-Kontexte 
 
 Für die statistische Auswertung beider Forschungsfragen bieten @Macmillan2004 sowie @Stanislaw1999 die Grundlage durch Signal Detection Theory. Sensitivität, Response Bias und ROC-Analysen erlauben es, zwischen echter Erkennungsleistung und veränderter Entscheidungstendenz zu unterscheiden, eine Unterscheidung, die für die Bewertung von KI-Assistenz zentral ist, da erhöhte Trefferquoten auch auf eine generell erhöhte Antwortbereitschaft zurückgehen können, ohne dass die eigentliche Detektionsleistung gestiegen ist.
 
-# Studie 1
+# Qualitative Studie
 
-Beschreibung von Studie 1.
+Um die Eigenschaften visuellen Clutter's in SAR Kontexten, genauer zu verstehen, bietet es sich an sich mit den Subjektiven Wahrnehmungen Einzelner Probanden zu befassen. Denn Objektiv messbare Eigenschaften die die Komplexität von Bildern beschreiben, wie Kantendichte oder Farbvariation, spielen zwar eine wichtige Rolle für wahrgenommenen Clutter können aber nicht jeden Aspekt beschreiben. @Moacdieh2015a Um diese Diskrepanz besser zu verstehen und eventuelle zusätzliche Eigenschaften zu benennen, haben wir einen Qualitative Studie durchgeführt.
+
+In dieser Studie haben wir ein geleitetes Interview mit verschidenen Probanten durchgeführt, in dessen Verlauf den Teilnehmenden Acht Monochrme Bilder aus dem Maritimen-SAR Kontext präsentiert wurden. Diese sollten zuerst durch "lautes Denken" und anschließend durch eine Bewertung der Unübersichtlichkeit auf einer Skala von 1-5 beschriben werden. Die Interviews wurden Aufgenommen und anschließend Anonymisiert und Semantisch Transskibiert. Zusätzlich musste jeder Teilnehmende einen Screening Fragebogen beantworten in dem die bisherige Erfahrung alter und Geschlecht erfragt wurden.
+
+Zur Analyse wurden die Transskripte der Interviews  mithilfe von MAXQDA auf Kategorien untersucht und Thematische Zusammenhänge hergestellt. 
 
 # Studie 2
 
