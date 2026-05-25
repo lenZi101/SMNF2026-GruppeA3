@@ -20,7 +20,7 @@ tbl-cap-location: bottom
 
 **GitHub Repository:** https://github.com/lenZi101/SMNF2026-GruppeA3
 
-**Für die Abgabe aktueller GitHub Hash:** a73a8a8dfc76a40787f23eb0449157c26bd115ca
+**Für die Abgabe aktueller GitHub Hash:** 5b03b6fe50e545587d3b37542467d01193f32a48
 
 ::: {.callout-note collapse="true"}
 # Code of Conduct
