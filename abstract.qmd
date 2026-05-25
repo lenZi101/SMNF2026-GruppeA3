@@ -167,11 +167,11 @@ ggplot(age_data, aes(x = factor(age))) +
 ### Themen Analyse
 Kategorie | Beispiel | Erkärung | Anzahl|
 ----------|----------|----------|-------:
-Perspektive | | |
-Kantendichte |  |  |
-Textur |  |  |
-Kontrast |  | |
-Farbvariation|  | |
+Kantendichte | 	Das Wasser ist auf jeden Fall super unruhig und ich erkenne eigentlich nichts außer Wellen | | 7
+Textur |  wird nach rechts immer gröberer Sand und ganz links ist super feiner Sand |  | 11
+Perspektive | Das ist so ein Bild, das könnte aus einer super nahen Perspektive sein. Man könnte mir aber auch sagen, dass ist von ewig weit weg und das ist so ein 20 Kilometer langer Strand. |  | 3
+Kontrast | Das Boot ist sogar noch ein bisschen heller | |1
+Farbvariation | das ist die Sandbank so ein sehr helles Grün im Vergleich zu allem anderen | |2
 
 ### Aufgaben Ergebnisse
 ```{r}
