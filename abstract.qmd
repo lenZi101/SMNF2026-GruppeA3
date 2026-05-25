@@ -101,9 +101,6 @@ In dieser Studie haben wir ein geleitetes Interview mit verschiedenen Probanden 
 Zur Führung durch das Interview und der Präsentation der Bilder und Aufgaben wurden sowohl ein eigens dafür geschriebenes Tool als auch analoge Materialien verwendet. Die Analyse wurde anhand der Interviewtranskripte mithilfe von MaxQDA in Anlehnung an die thematische Analyse nach Braun und Clarke durchgeführt.
 
 ## Ergebinsse
-
-Mit einer Stichprobe von 3 Interviews verteilt über die Erfahrungslevel keine bis wenig, und einem durchschnittlichen Alter unter 30 wurde nur eine kleiner Teil der möglichen Zielgruppe repräsentiert. Trotzdem lassen sich aus Qualitativen Studien oft auch aus kleinen Stichproben wichtige Erkenntnisse ziehen.
-
 ### Sceening Fragebogen:
 
 ```{r}
@@ -113,7 +110,7 @@ Mit einer Stichprobe von 3 Interviews verteilt über die Erfahrungslevel keine b
 #| fig-cap: Erfahrungslevel
 
 library(ggplot2)
-exp_lvls <- c(0,1)
+exp_lvls <- c(0,0,1)
 # Namen der Levels
 exp_names <- c(
   "keine",
@@ -143,14 +140,14 @@ ggplot(exp_data, aes(x = Erfahrung)) +
 ```
 
 ```{r}
-#| label: fig-age
+#| label: fig-sex
 #| echo: false
 #| warning: false
-#| fig-cap: Altersverteilung
+#| fig-cap: Geschlechtssverteilung
 
 library(ggplot2)
 
-ages <- c(25,19)
+ages <- c("M","W","W")
 
 # Dataframe erstellen
 age_data <- data.frame(
@@ -161,12 +158,24 @@ age_data <- data.frame(
 ggplot(age_data, aes(x = factor(age))) +
   geom_bar(fill = "steelblue") +
   labs(
-    title = "Altersverteilung",
-    x = "Alter",
+    title = "Geeschlechtsverteilung",
+    x = "Geschlecht",
     y = "Anzahl"
   ) +
   theme_minimal()
 ```
+
+Mit einer Stichprobe von 3 Interviews verteilt über die Erfahrungslevel "keine“ bis „wenig Erfahrung“, und einem durchschnittlichen Alter von 22 Jahren wurde lediglich ein kleiner Teil der potenziellen Zielgruppe repräsentiert. Dennoch können qualitative Studien auch bei kleinen Stichproben wertvolle Erkenntnisse über subjektive Wahrnehmungs- und Interpretationsmuster liefern.
+
+Zwischen den Befragten zeigten sich deutliche Übereinstimmungen hinsichtlich der Merkmale übersichtlicher beziehungsweise unübersichtlicher Bilder. Viele der genannten Faktoren finden sich bereits in  @Moacdieh2015a wieder. Besonders häufig wurden Eigenschaften beschrieben, die sich den Bereichen „Muster, Kanten und Strukturen“, „Farbe und Helligkeit“ sowie „Gleichförmigkeit und Segmentierung“ zuordnen lassen. Aussagen zu unruhigen Wasseroberflächen oder schwer unterscheidbaren Wellenstrukturen deuten beispielsweise auf eine hohe wahrgenommene Kantendichte hin. Ebenso wurden Unterschiede in Oberflächenstrukturen – etwa zwischen grobem und feinem Sand – häufig thematisiert und als relevante visuelle Orientierungspunkte beschrieben.
+
+Im Gegensatz zu den stärker vereinfachenden Kategorisierungen klassischer Clutter-Modelle zeigte sich jedoch, dass einzelne visuelle Eigenschaften nicht eindeutig als clutter-erhöhend oder clutter-reduzierend eingeordnet werden konnten. Während ein hoher Kontrast beispielsweise die Sichtbarkeit einzelner Objekte verbessern und damit die Orientierung erleichtern kann, konnte eine hohe Farbvariation gleichzeitig als visuell unruhig wahrgenommen werden. Die Wirkung einzelner Eigenschaften scheint daher stark vom jeweiligen Bildkontext und der Interaktion mehrerer visueller Merkmale abhängig zu sein.
+
+Darüber hinaus traten in den Interviews Wahrnehmungsaspekte auf, die in bestehenden Clutter-Modellen nur indirekt oder gar nicht beschrieben werden. Besonders auffällig war die wiederholt geäußerte Unsicherheit bei der räumlichen Einordnung von Bildinhalten. Teilnehmende beschrieben einzelne Szenen als schwer hinsichtlich ihrer tatsächlichen Größe oder Distanz interpretierbar. Diese Form räumlicher Ambiguität geht über die reine Perspektivbeschreibung hinaus und deutet darauf hin, dass visuelle Clutter-Wahrnehmung nicht ausschließlich von der Menge visueller Informationen abhängt, sondern auch von deren Interpretierbarkeit.
+
+Diese Beobachtung lässt sich zusätzlich mit dem von Christopher Wickens beschriebenen kognitiven Suchaufwand in Verbindung bringen. Nach @Wickens2014 entsteht visuelle Belastung nicht allein durch die Anzahl sichtbarer Elemente, sondern auch durch den mentalen Aufwand, der notwendig ist, relevante Informationen zu identifizieren, räumlich einzuordnen und von irrelevanten Bildbestandteilen zu unterscheiden. Insbesondere uneindeutige Perspektiven oder schwer interpretierbare Strukturen können diesen Suchprozess verlängern und dadurch die wahrgenommene Komplexität eines Bildes erhöhen.
+
+Zusätzlich zeigte sich, dass Teilnehmende Bildbereiche häufig nicht nur anhand visueller Eigenschaften beschrieben, sondern implizit mit materiellen oder haptischen Vorstellungen verknüpften. Beschreibungen wie „grober“ oder „feiner“ Sand deuten darauf hin, dass visuelle Texturen mentale Vorstellungen physischer Materialeigenschaften hervorrufen können. Diese Beobachtung erweitert klassische Clutter-Ansätze um eine stärker subjektive und erfahrungsbezogene Wahrnehmungsebene.
 
 ### Thematische Analyse
 
@@ -182,6 +191,44 @@ ggplot(age_data, aes(x = factor(age))) +
 :Themen {#tbl-themen, tbl-colwidths="[20,30,50]"}
 
 ### Aufgaben Ergebnisse
+```{r}
+#| label: fig-pic-ranks
+#| echo: false
+#| warning: false
+#| fig-cap: Bild Unübersichtlichkeit
+
+library(ggplot2)
+library(tidyverse)
+
+A3_1 <- c(3,1,5,1,3,1,4,2)
+A3_4 <- c(4.8,2,3,3,4,1,5,2.5)
+A3_3 <- c(4,2,3,2,5,1,4,3)
+pics <- c("Bild 1","Bild 2","Bild 3","Bild 4","Bild 5","Bild 6","Bild 7","Bild 8")
+
+rank_data <- data.frame(
+  pic = pics,
+  ranks1 = A3_1,
+  ranks2 = A3_4,
+  ranks3 = A3_3
+)
+
+# Durchschnitt berechnen
+rank_data <- rank_data %>%
+  mutate(avg_rank = rowMeans(across(starts_with("ranks"))))
+
+# Plot
+ggplot(rank_data, aes(x = pic, y = avg_rank)) +
+  geom_col(fill = "steelblue") +
+  labs(
+    title = "Durchschnittlicher Bild Rang",
+    x = " ",
+    y = "Unübersichtlichkeit (1-5)"
+  ) +
+  theme_minimal()
+```
+Besonders hohe Werte erhielten Bild 5 sowie Bild 7, die von mehreren Teilnehmenden als visuell unruhig und schwer interpretierbar beschrieben wurden. In den Interviews wurden diese Bilder häufig mit einer hohen Dichte visueller Strukturen, schwer unterscheidbaren Bereichen sowie einer erhöhten räumlichen Uneindeutigkeit in Verbindung gebracht. Bild 6 wurde dagegen von allen Teilnehmenden als vergleichsweise übersichtlich bewertet.
+
+Die Ergebnisse deuten darauf hin, dass die Wahrnehmung von Clutter nicht ausschließlich von der Anzahl sichtbarer Elemente abhängt, sondern auch von deren Strukturierbarkeit und Interpretierbarkeit. Dies unterstützt sowohl die wahrnehmungsbezogene Definition von Clutter nach Nadine Moacdieh als auch den von Christopher Wickens beschriebenen Zusammenhang zwischen visueller Komplexität und kognitivem Suchaufwand.
 
 ```{r}
 #| label: fig-card-Sort
@@ -220,42 +267,11 @@ ggplot(card_data, aes(x = reorder(card, avg_order), y = avg_order)) +
   ) +
   theme_minimal()
 ```
+Im Card-Sorting-Task ordneten die Teilnehmenden verschiedene Clutter-Eigenschaften nach ihrer wahrgenommenen Relevanz. Niedrige Werte entsprechen dabei einer höheren Priorisierung der jeweiligen Eigenschaft. Besonders relevant wurden Segmentierung, Symmetrie sowie Kantendichte eingeordnet, während Verdeckung und Überfüllung im Durchschnitt niedrigere Prioritäten erhielten.
 
-```{r}
-#| label: fig-pic-ranks
-#| echo: false
-#| warning: false
-#| fig-cap: Bild Unübersichtlichkeit
+Die Ergebnisse zeigen, dass vor allem strukturelle und segmentierungsbezogene Eigenschaften eine zentrale Rolle für die subjektive Wahrnehmung visueller Unübersichtlichkeit spielen. Dies deckt sich mit den Aussagen aus den Interviews, in denen insbesondere unruhige Wasserstrukturen, schwer abgrenzbare Bereiche und überlagernde Bildmuster beschrieben wurden.
 
-library(ggplot2)
-library(tidyverse)
-
-A3_1 <- c(3,1,5,1,3,1,4,2)
-A3_4 <- c(4.8,2,3,3,4,1,5,2.5)
-A3_3 <- c(4,2,3,2,5,1,4,3)
-pics <- c("Bild 1","Bild 2","Bild 3","Bild 4","Bild 5","Bild 6","Bild 7","Bild 8")
-
-rank_data <- data.frame(
-  pic = pics,
-  ranks1 = A3_1,
-  ranks2 = A3_4,
-  ranks3 = A3_3
-)
-
-# Durchschnitt berechnen
-rank_data <- rank_data %>%
-  mutate(avg_rank = rowMeans(across(starts_with("ranks"))))
-
-# Plot
-ggplot(rank_data, aes(x = pic, y = avg_rank)) +
-  geom_col(fill = "steelblue") +
-  labs(
-    title = "Durchschnittlicher Bild Rang",
-    x = " ",
-    y = "Unübersichtlichkeit (1-5)"
-  ) +
-  theme_minimal()
-```
+Gleichzeitig wurde deutlich, dass die Teilnehmenden Clutter nicht ausschließlich über objektive Bildmerkmale definierten. Einige Eigenschaften wurden stark kontextabhängig interpretiert. So konnte beispielsweise eine hohe Kantendichte sowohl als störend als auch als orientierungsgebend wahrgenommen werden. Ähnliche Ambivalenzen zeigten sich bei Kontrast und Segmentierung.
 
 # Studie 2
 
