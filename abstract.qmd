@@ -101,7 +101,7 @@ Zur Führung durchs Interview und der Präsentation der Bilder un Aufgaben wurde
 
 ## Ergebinsse
 Mit einer Stichprobe von 4 Interviews verteilt über die Erfahrungslevel keine bis wenig, und einem durchschnittlichen Alter unter 30 wurde nur eine kleiner Teil der möglichen Zielgruppe repräsentiert.
-Trotzdem lassen sich aus Qualitativen Studien oft auch aus keinen Stichproben wichtige Erkenntnisse ziehen.
+Trotzdem lassen sich aus Qualitativen Studien oft auch aus kleinen Stichproben wichtige Erkenntnisse ziehen.
 
 ### Sceening Fragebogen:
 ```{r}
@@ -111,7 +111,7 @@ Trotzdem lassen sich aus Qualitativen Studien oft auch aus keinen Stichproben wi
 #| fig-cap: Erfahrungslevel
 
 library(ggplot2)
-exp_lvls <- c(0,0)
+exp_lvls <- c(0,0,1)
 # Namen der Levels
 exp_names <- c(
   "keine",
@@ -147,7 +147,7 @@ ggplot(exp_data, aes(x = Erfahrung)) +
 
 library(ggplot2)
 
-ages <- c(25)
+ages <- c(25,19)
 
 # Dataframe erstellen
 age_data <- data.frame(
