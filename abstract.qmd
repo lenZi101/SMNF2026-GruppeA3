@@ -92,18 +92,19 @@ Für die statistische Auswertung beider Forschungsfragen bieten @Macmillan2004 s
 # Qualitative Studie
 
 ## Methode
+
 Um die Eigenschaften visuellen Clutter's in SAR Kontexten, genauer zu verstehen, bietet es sich an sich mit den subjektiven Wahrnehmungen einzelner Probanden zu befassen. Denn Objektiv messbare Eigenschaften die die Komplexität von Bildern beschreiben, wie Kantendichte oder Farbvariation, spielen zwar eine wichtige Rolle für wahrgenommenen Clutter können aber nicht jeden Aspekt beschreiben. @Moacdieh2015a Um diese Diskrepanz besser zu verstehen und eventuelle zusätzliche Eigenschaften zu benennen, haben wir einen Qualitative Studie durchgeführt.
 
-In dieser Studie haben wir ein geleitetes Interview mit verschiedenen Probanden durchgeführt, in dessen Verlauf den Teilnehmenden Acht Monochrme Bilder aus dem Maritimen-SAR Kontext präsentiert wurden. Diese sollten zuerst durch "lautes Denken" und anschließend durch eine Bewertung der Unübersichtlichkeit auf einer Skala von 1-5 beschrieben werden. Anschließend wurde ein Card-Sorting-Task mit typischen Clutter Eigenschaften nach  @Moacdieh2015a durchgeführt und dokumentiert. 
-Die Interviews wurden Aufgenommen und anschließend Anonymisiert und Semantisch Transskibiert. Zusätzlich musste jeder Teilnehmende einen Screening Fragebogen beantworten in dem die bisherige Erfahrung, Alter und Geschlecht erhoben wurden.
+In dieser Studie haben wir ein geleitetes Interview mit verschiedenen Probanden durchgeführt, in dessen Verlauf den Teilnehmenden Acht Monochrme Bilder aus dem Maritimen-SAR Kontext präsentiert wurden. Diese sollten zuerst durch "lautes Denken" und anschließend durch eine Bewertung der Unübersichtlichkeit auf einer Skala von 1-5 beschrieben werden. Anschließend wurde ein Card-Sorting-Task mit typischen Clutter Eigenschaften nach @Moacdieh2015a durchgeführt und dokumentiert. Die Interviews wurden Aufgenommen und anschließend Anonymisiert und Semantisch Transskibiert. Zusätzlich musste jeder Teilnehmende einen Screening Fragebogen beantworten in dem die bisherige Erfahrung, Alter und Geschlecht erhoben wurden.
 
 Zur Führung durchs Interview und der Präsentation der Bilder un Aufgaben wurde Sowohl ein eigens dafür geschriebenes Tool als auch analoge Materialien verwendet.Die Analyse wurde durch die Transskripte der Interviews mithilfe von MaxQDA in Anlehnung an die Thematische Analyse nach Braun und Clarke durchführt.
 
 ## Ergebinsse
-Mit einer Stichprobe von 4 Interviews verteilt über die Erfahrungslevel keine bis wenig, und einem durchschnittlichen Alter unter 30 wurde nur eine kleiner Teil der möglichen Zielgruppe repräsentiert.
-Trotzdem lassen sich aus Qualitativen Studien oft auch aus kleinen Stichproben wichtige Erkenntnisse ziehen.
+
+Mit einer Stichprobe von 4 Interviews verteilt über die Erfahrungslevel keine bis wenig, und einem durchschnittlichen Alter unter 30 wurde nur eine kleiner Teil der möglichen Zielgruppe repräsentiert. Trotzdem lassen sich aus Qualitativen Studien oft auch aus kleinen Stichproben wichtige Erkenntnisse ziehen.
 
 ### Sceening Fragebogen:
+
 ```{r}
 #| label: fig-exp
 #| echo: false
@@ -139,6 +140,7 @@ ggplot(exp_data, aes(x = Erfahrung)) +
   ) +
   theme_minimal()
 ```
+
 ```{r}
 #| label: fig-age
 #| echo: false
@@ -166,15 +168,17 @@ ggplot(age_data, aes(x = factor(age))) +
 ```
 
 ### Themen Analyse
-Kategorie | Beispiel | Definition | Anzahl|
-----------|----------|----------|-------:
-Kantendichte | 	Das Wasser ist auf jeden Fall super unruhig und ich erkenne eigentlich nichts außer Wellen | | 7
-Textur |  wird nach rechts immer gröberer Sand und ganz links ist super feiner Sand |  | 11
-Perspektive | Das ist so ein Bild, das könnte aus einer super nahen Perspektive sein. Man könnte mir aber auch sagen, dass ist von ewig weit weg und das ist so ein 20 Kilometer langer Strand. |  | 3
-Kontrast | Das Boot ist sogar noch ein bisschen heller | |1
-Farbvariation | das ist die Sandbank so ein sehr helles Grün im Vergleich zu allem anderen | |2
+
+| Kategorie | Beispiel | Definition | Anzahl |
+|----|----|----|---:|
+| Kantendichte | Das Wasser ist auf jeden Fall super unruhig und ich erkenne eigentlich nichts außer Wellen |  | 7 |
+| Textur | wird nach rechts immer gröberer Sand und ganz links ist super feiner Sand |  | 11 |
+| Perspektive | Das ist so ein Bild, das könnte aus einer super nahen Perspektive sein. Man könnte mir aber auch sagen, dass ist von ewig weit weg und das ist so ein 20 Kilometer langer Strand. |  | 3 |
+| Kontrast | Das Boot ist sogar noch ein bisschen heller |  | 1 |
+| Farbvariation | das ist die Sandbank so ein sehr helles Grün im Vergleich zu allem anderen |  | 2 |
 
 ### Aufgaben Ergebnisse
+
 ```{r}
 #| label: fig-card-Sort
 #| echo: false
@@ -212,6 +216,7 @@ ggplot(card_data, aes(x = reorder(card, avg_order), y = avg_order)) +
   ) +
   theme_minimal()
 ```
+
 ```{r}
 #| label: fig-pic-ranks
 #| echo: false
@@ -247,7 +252,6 @@ ggplot(rank_data, aes(x = pic, y = avg_rank)) +
   ) +
   theme_minimal()
 ```
-
 
 # Studie 2
 
