@@ -273,67 +273,6 @@ Die Ergebnisse zeigen, dass vor allem strukturelle und segmentierungsbezogene Ei
 
 Gleichzeitig wurde deutlich, dass die Teilnehmenden Clutter nicht ausschließlich über objektive Bildmerkmale definierten. Einige Eigenschaften wurden stark kontextabhängig interpretiert. So konnte beispielsweise eine hohe Kantendichte sowohl als störend als auch als orientierungsgebend wahrgenommen werden. Ähnliche Ambivalenzen zeigten sich bei Kontrast und Segmentierung.
 
-```{r}
-library(ggplot2)
-
-exp_lvls <- c("keine", "wenig", "mäßige", "umfangreiche")
-exp_count <- c(2, 0, 0, 0)
-
-exp <- data.frame(exp_lvls, exp_count)
-
-ggplot(exp, aes(x = exp_lvls, y = exp_count)) +
-  geom_bar(stat = "identity") +
-  labs(
-    x = "Erfahrung",
-    y = "Anzahl",
-    title = "Anzahl Erfasster Erfahrungs Level"
-  )
-```
-  
-```{r}
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-
-card <- c(
-  "Symmetrie",
-  "Vorhersagbarkeit",
-  "Farbvarianz",
-  "Kantendichte",
-  "Segmentierung",
-  "Verdeckung",
-  "Überfüllung"
-)
-
-A3_1 <- c(4, 7, 6, 2, 5, 1, 3)
-A3_2 <- c(3, 5, 6, 4, 2, 7, 1)
-
-data <- data.frame(card, A3_1, A3_2)
-
-data_long <- data |>
-  pivot_longer(
-    cols = starts_with("A3_"),
-    names_to = "person",
-    values_to = "rank"
-  )
-
-avg_ranks <- data_long |>
-  group_by(card) |>
-  summarise(mean_rank = mean(rank), .groups = "drop")
-
-ggplot(avg_ranks, aes(x = reorder(card, mean_rank), y = mean_rank)) +
-  geom_col() +
-  scale_y_reverse(breaks = 1:7) +
-  labs(
-    x = "Karte",
-    y = "Durchschnittlicher Rang",
-    title = "Durchschnittlicher Karten-Rang"
-  )+
-  theme(
-    axis.text.x = element_text(size = 8, angle = 45, hjust = 1)
-  )
-```
-
 # Studie 2
 
 Beschreibung von Studie 2.
