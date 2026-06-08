@@ -307,22 +307,22 @@ Zusätzlich werden mehrere subjektive Einschätzungen erhoben. Der subjektive Wo
 Die erste Hypothese lautet, dass die Leistung, gemessen als Anteil korrekter Antworten pro Teilnehmer*in anhand der Variable correct_button in der KI-gestützten Phase (phase = ai_supported), in der Blur-Gruppe (method_level = blur) höher ist als in der Bounding-Box-Gruppe (method_level = box). Die zweite Hypothese lautet, dass eine höhere wahrgenommene KI-Genauigkeit (perceived_ai_accuracy) mit einem höheren Vertrauen in die Leistung des KI-Systems zusammenhängt, gemessen als Mittelwert der Variablen ai_trust.PE1, ai_trust.PE2 und ai_trust.PE3. Zur Prüfung dieser Zusammenhangshypothese wird eine Pearson-Korrelation geplant. Für beide Analysen werden die Daten auf Ebene der Teilnehmenden aggregiert, sodass pro Person jeweils ein Leistungswert beziehungsweise ein Trust-Performance-Wert in die Analyse eingeht.
 
 
-| Variable | Variablenname | Codes | Skalenniveau | Quelle |
-|:---|:---|:---|:---|:---|
-| Alter | age |  | metrisch |  |
-| Geschlecht | gender | 0 = männlich<br>1 = weiblich<br>2 = divers | nominal |  |
-| Normales Sehvermögen | normalvision | TRUE = Ja<br>FALSE = Nein | nominal |  |
-| Farbsehschwäche | colorvision | TRUE = Ja<br>FALSE = Nein | nominal |  |
-| Erfahrung mit visueller Suche | visual_search_experience | 0 = Nein, keine Erfahrung<br>1 = Wenig Erfahrung<br>2 = Mäßige Erfahrung<br>3 = Umfangreiche Erfahrung | ordinal |  |
-| Frühere Teilnahme | prior_participation | TRUE = Ja<br>FALSE = Nein | nominal |  |
-| Phase (Label) | phase | baseline = Baseline ohne KI<br>ai_supported = Phase mit KI-Unterstützung | nominal |  |
-| KI-Methode (Label) | method_level | box = Bounding Box<br>blur = Blur | nominal |  |
-| Antwort korrekt | correct_button | TRUE = korrekt<br>FALSE = falsch | nominal |  |
-| Subjektiver Workload | single_workload | 0 = Niedrig<br>100 = Hoch | metrisch | @hartDevelopmentNASATLXTask1988 |
-| Subjektive Unsicherheit | subjective_uncertainty | 0 = Sehr sicher<br>100 = Sehr unsicher | metrisch |  |
-| Wahrgenommene eigene Genauigkeit | perceived_self_accuracy | 0 = Sehr ungenau<br>100 = Sehr genau | metrisch |  |
-| Wahrgenommene KI-Genauigkeit | perceived_ai_accuracy | 0 = Sehr ungenau<br>100 = Sehr genau | metrisch |  |
-| Trust – Performance 1,<br>Trust – Performance 2,<br>Trust – Performance 3 | ai_trust.PE1,<br>ai_trust.PE2,<br>ai_trust.PE3 | 1 = Stimme nicht zu<br>2 = Stimme eher nicht zu<br>3 = Stimme eher zu<br>4 = Stimme zu | metrisch, <br>Likert 1-4 | @roeslerTrustHumanVs2022 |
+| Variable | Variablenname | Skalenniveau | Quelle |
+|:---|:---|:---|:---|
+| Alter | age | metrisch |  |
+| Geschlecht | gender | nominal |  |
+| Normales Sehvermögen | normalvision | nominal |  |
+| Farbsehschwäche | colorvision | nominal |  |
+| Erfahrung mit visueller Suche | visual_search_experience | ordinal |  |
+| Frühere Teilnahme | prior_participation | nominal |  |
+| Phase (Label) | phase | nominal |  |
+| KI-Methode (Label) | method_level | nominal |  |
+| Antwort korrekt | correct_button | nominal |  |
+| Subjektiver Workload | single_workload | metrisch | @hartDevelopmentNASATLXTask1988 |
+| Subjektive Unsicherheit | subjective_uncertainty | metrisch |  |
+| Wahrgenommene eigene Genauigkeit | perceived_self_accuracy | metrisch |  |
+| Wahrgenommene KI-Genauigkeit | perceived_ai_accuracy | metrisch |  |
+| Trust – Performance 1,<br>Trust – Performance 2,<br>Trust – Performance 3 | ai_trust.PE1,<br>ai_trust.PE2,<br>ai_trust.PE3 | metrisch, <br>Likert 1-4 | @roeslerTrustHumanVs2022 |
 :Variablen {#tbl-variablen}
 
 ## Hypothesen
