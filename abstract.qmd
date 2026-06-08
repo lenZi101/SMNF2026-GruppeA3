@@ -66,7 +66,7 @@ Alle Gruppenmitglieder verplichten sich zu diesem Code of Conduct.
 
 ## Welche Eigenschaften charakterisieren den wahrgenommenen visuellen Clutter bei SAR-Suchaufgaben?
 
-## Welche Faktoren beeinflussen bei KI-unterstützten SAR-Suchaufgaben Leistung, Interaktion mit dem System und User Experience?
+## Inwiefern unterscheiden sich die KI-Visualisierungsmethoden Bounding Box und Blur hinsichtlich der Leistung in der visuellen Suchaufgabe, und wie hängt die wahrgenommene Genauigkeit des KI-Systems mit dem Vertrauen in das KI-System zusammen?
 
 # Literaturübersicht
 
