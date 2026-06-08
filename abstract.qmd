@@ -19,7 +19,7 @@ tbl-cap-location: bottom
 
 **GitHub Repository:** https://github.com/lenZi101/SMNF2026-GruppeA3
 
-**Für die Abgabe aktueller GitHub Hash:** 5b03b6fe50e545587d3b37542467d01193f32a48
+**Für die Abgabe aktueller GitHub Hash:** c0fe0bed7e7d6257a88c9744875d4b8d6829b214
 
 ::: {.callout-note collapse="true"}
 # Code of Conduct
@@ -306,24 +306,28 @@ Als zentrales Leistungsmaß wird der Anteil korrekter Antworten pro Teilnehmer*i
 Zusätzlich werden mehrere subjektive Einschätzungen erhoben. Der subjektive Workload wird über die Variable single_workload erfasst. Die subjektive Unsicherheit wird mit subjective_uncertainty gemessen. Außerdem geben die Teilnehmenden an, wie genau sie ihre eigene Leistung einschätzen (perceived_self_accuracy) und wie genau sie die KI einschätzen (perceived_ai_accuracy). Das Vertrauen in das KI-System wird über mehrere Trust-Items erhoben. Für die Zusammenhangshypothese wird ein Trust-Performance-Score gebildet, indem der Mittelwert aus den Variablen ai_trust.PE1, ai_trust.PE2 und ai_trust.PE3 berechnet wird. (@tbl-variablen)
 Die erste Hypothese lautet, dass die Leistung, gemessen als Anteil korrekter Antworten pro Teilnehmer*in anhand der Variable correct_button in der KI-gestützten Phase (phase = ai_supported), in der Blur-Gruppe (method_level = blur) höher ist als in der Bounding-Box-Gruppe (method_level = box). Die zweite Hypothese lautet, dass eine höhere wahrgenommene KI-Genauigkeit (perceived_ai_accuracy) mit einem höheren Vertrauen in die Leistung des KI-Systems zusammenhängt, gemessen als Mittelwert der Variablen ai_trust.PE1, ai_trust.PE2 und ai_trust.PE3. Zur Prüfung dieser Zusammenhangshypothese wird eine Pearson-Korrelation geplant. Für beide Analysen werden die Daten auf Ebene der Teilnehmenden aggregiert, sodass pro Person jeweils ein Leistungswert beziehungsweise ein Trust-Performance-Wert in die Analyse eingeht.
 
+\renewcommand{\arraystretch}{1.5} <!-- Adjusts vertical row spacing -->
 
 | Variable | Variablenname | Skalenniveau | Quelle |
 |:---|:---|:---|:---|
-| Alter | age | metrisch |  |
-| Geschlecht | gender | nominal |  |
-| Normales Sehvermögen | normalvision | nominal |  |
-| Farbsehschwäche | colorvision | nominal |  |
-| Erfahrung mit visueller Suche | visual_search_experience | ordinal |  |
-| Frühere Teilnahme | prior_participation | nominal |  |
-| Phase (Label) | phase | nominal |  |
-| KI-Methode (Label) | method_level | nominal |  |
-| Antwort korrekt | correct_button | nominal |  |
-| Subjektiver Workload | single_workload | metrisch | @hartDevelopmentNASATLXTask1988 |
-| Subjektive Unsicherheit | subjective_uncertainty | metrisch |  |
-| Wahrgenommene eigene Genauigkeit | perceived_self_accuracy | metrisch |  |
-| Wahrgenommene KI-Genauigkeit | perceived_ai_accuracy | metrisch |  |
-| Trust – Performance 1,<br>Trust – Performance 2,<br>Trust – Performance 3 | ai_trust.PE1,<br>ai_trust.PE2,<br>ai_trust.PE3 | metrisch, <br>Likert 1-4 | @roeslerTrustHumanVs2022 |
+| **Alter** | age | metrisch |  |
+| **Geschlecht** | gender | nominal |  |
+| **Normales Sehvermögen** | normalvision | nominal |  |
+| **Farbsehschwäche** | colorvision | nominal |  |
+| **Erfahrung mit visueller Suche** | visual_search_experience | ordinal |  |
+| **Frühere Teilnahme** | prior_participation | nominal |  |
+| **Phase (Label)** | phase | nominal |  |
+| **KI-Methode (Label)** | method_level | nominal |  |
+| **Antwort korrekt** | correct_button | nominal |  |
+| **Subjektiver Workload** | single_workload | metrisch | @hartDevelopmentNASATLXTask1988 |
+| **Subjektive Unsicherheit** | subjective_uncertainty | metrisch |  |
+| **Wahrgenommene eigene Genauigkeit** | perceived_self_accuracy | metrisch |  |
+| **Wahrgenommene KI-Genauigkeit** | perceived_ai_accuracy | metrisch |  |
+| **Trust – Performance 1,<br>Trust – Performance 2,<br>Trust – Performance 3** | ai_trust.PE1, <br>ai_trust.PE2, <br>ai_trust.PE3 | metrisch, <br>Likert 1-4 | @roeslerTrustHumanVs2022 |
 :Variablen {#tbl-variablen}
+
+\renewcommand{\arraystretch}{1.0} <!-- Resets back to normal -->
+
 
 ## Hypothesen
 
