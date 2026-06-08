@@ -273,9 +273,54 @@ Die Ergebnisse zeigen, dass vor allem strukturelle und segmentierungsbezogene Ei
 
 Gleichzeitig wurde deutlich, dass die Teilnehmenden Clutter nicht ausschließlich über objektive Bildmerkmale definierten. Einige Eigenschaften wurden stark kontextabhängig interpretiert. So konnte beispielsweise eine hohe Kantendichte sowohl als störend als auch als orientierungsgebend wahrgenommen werden. Ähnliche Ambivalenzen zeigten sich bei Kontrast und Segmentierung.
 
-# Studie 2
+# Quantitative Studie
 
-Beschreibung von Studie 2.
+## Methode
+
+
+```{mermaid}
+%%| label: fig-study-flow
+%%| fig-cap: "Ablauf der quantitativen Online-Studie."
+
+flowchart TD
+    A[Aufruf der Online-Studie] --> B[Informationen zur Studie und Einwilligung]
+    B --> C[Prüfung der Einschluss- und Ausschlusskriterien]
+    C --> D[Demografische Angaben]
+    D --> E[Baseline-Phase ohne KI-Unterstützung<br/>Blöcke 1 bis 3]
+    E --> F[Post-Phase-Fragebogen<br/>subjektive Unsicherheit und eigene Genauigkeit]
+    F --> G[KI-gestützte Phase<br/>Blöcke 4 bis 6]
+    G --> H[Workload-Erfassung nach Trials]
+    H --> I[Trust-Fragebogen und Einschätzung der KI-Genauigkeit]
+    I --> J[Abschluss der Studie]
+    
+```
+
+## Hypothesen
+
+### Unterschiedshypothese
+
+### H1: {.unnumbered}
+Die Leistung, gemessen als Anteil korrekter Antworten pro Teilnehmer*in anhand der Variable correct_button in der KI-gestützten Phase (phase = ai_supported), ist in der Blur-Gruppe (method_level = blur) höher als in der Bounding-Box-Gruppe (method_level = box).
+
+Nullhypothese H0₁:
+Die Leistung, gemessen als Anteil korrekter Antworten pro Teilnehmer*in anhand der Variable correct_button in der KI-gestützten Phase (phase = ai_supported), unterscheidet sich nicht zwischen der Blur-Gruppe (method_level = blur) und der Bounding-Box-Gruppe (method_level = box).
+
+Test: unabhängiger t-Test
+UV: KI-Visualisierungsmethode method_level mit den Gruppen box und blur
+AV: Anteil korrekter Antworten pro Teilnehmer*in aus correct_button in der KI-gestützten Phase
+Design: einfaktorielles Between-Subjects-Design
+
+### Zusammenhangshypothese
+
+### H2: {.unnumbered}
+Je höher die wahrgenommene KI-Genauigkeit (perceived_ai_accuracy), desto höher ist das Vertrauen in die Leistung des KI-Systems, gemessen als Mittelwert der Variablen ai_trust.PE1, ai_trust.PE2 und ai_trust.PE3.
+
+Nullhypothese H0₂:
+Es besteht kein positiver Zusammenhang zwischen der wahrgenommenen KI-Genauigkeit (perceived_ai_accuracy) und dem Vertrauen in die Leistung des KI-Systems, gemessen als Mittelwert der Variablen ai_trust.PE1, ai_trust.PE2 und ai_trust.PE3.
+
+Test: Pearson-Korrelation
+Variable 1: perceived_ai_accuracy
+Variable 2: Trust-Performance-Score als Mittelwert aus ai_trust.PE1, ai_trust.PE2, ai_trust.PE3
 
 # Diskussion
 
