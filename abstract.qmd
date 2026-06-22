@@ -332,17 +332,141 @@ Die erste Hypothese lautet, dass die Leistung, gemessen als Anteil korrekter Ant
 ## Hypothesen
 
 ### Unterschiedshypothese
-
 ### H1: {.unnumbered}
-Die Leistung, gemessen als Anteil korrekter Antworten pro Teilnehmer*in anhand der Variable correct_button in der KI-gestützten Phase (phase = ai_supported), ist in der Blur-Gruppe (method_level = blur) höher als in der Bounding-Box-Gruppe (method_level = box).
+
+Die Leistung, gemessen als Anteil korrekter Antworten pro Teilnehmer*in anhand der Variable correct_button, ist in der KI-gestützten Phase (phase = ai_supported) höher als in der nicht KI-gestützten Phase (phase = baseline) innerhalb der Blur-Bedingung (method_level = blur).
 
 Nullhypothese H0₁:
-Die Leistung, gemessen als Anteil korrekter Antworten pro Teilnehmer*in anhand der Variable correct_button in der KI-gestützten Phase (phase = ai_supported), unterscheidet sich nicht zwischen der Blur-Gruppe (method_level = blur) und der Bounding-Box-Gruppe (method_level = box).
+Die Leistung, gemessen als Anteil korrekter Antworten pro Teilnehmer*in anhand der Variable correct_button, unterscheidet sich nicht zwischen der KI-gestützten Phase (phase = ai_supported) und der nicht KI-gestützten Phase (phase = baseline) innerhalb der Blur-Bedingung (method_level = blur).
 
-Test: Unabhängiger t-Test
-UV: KI-Visualisierungsmethode method_level mit den Gruppen box und blur
-AV: Anteil korrekter Antworten pro Teilnehmer*in aus correct_button in der KI-gestützten Phase
-Design: einfaktorielles Between-Subjects-Design
+Test: t-Test für abhängige Stichproben
+UV: Phase (phase) mit den Stufen nicht KI-gestützt und KI-gestützt
+AV: Anteil korrekter Antworten pro Teilnehmer*in aus correct_button
+Design: einfaktorielles Within-Subjects-Design innerhalb der Blur-Bedingung
+
+```{r}
+#| label: h1-analyse
+#| echo: true
+#| warning: true
+#| fig-cap: H1 Analyse 
+
+
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+df <- read.csv("lab_merged_data_20260616.csv")
+id_var <- "participant_id"
+############################################################
+# 1. Daten vorbereiten
+############################################################
+
+df_clean <- df %>%
+  filter(method_level == "blur") %>%
+  mutate(
+    correct_button = as.numeric(correct_button),
+    perceived_ai_accuracy = as.numeric(perceived_ai_accuracy),
+    ai_trust.PE1 = as.numeric(ai_trust.PE1),
+    ai_trust.PE2 = as.numeric(ai_trust.PE2),
+    ai_trust.PE3 = as.numeric(ai_trust.PE3)
+  )
+############################################################
+# H1: Anteil korrekter Antworten pro Teilnehmer*in und Phase
+############################################################
+
+h1_data_long <- df_clean %>%
+  filter(phase %in% c("baseline", "ai_supported")) %>%
+  group_by(.data[[id_var]], phase) %>%
+  summarise(
+    accuracy = mean(correct_button, na.rm = TRUE),
+    n_trials = n(),
+    .groups = "drop"
+  )
+
+# Daten anschauen
+h1_data_long
+
+h1_descriptives <- h1_data_long %>%
+  group_by(phase) %>%
+  summarise(
+    n = n(),
+    mean_accuracy = mean(accuracy, na.rm = TRUE),
+    sd_accuracy = sd(accuracy, na.rm = TRUE),
+    median_accuracy = median(accuracy, na.rm = TRUE),
+    min_accuracy = min(accuracy, na.rm = TRUE),
+    max_accuracy = max(accuracy, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+h1_descriptives
+############################################################
+# H1: Daten ins Wide-Format bringen
+############################################################
+
+h1_data_wide <- h1_data_long %>%
+  pivot_wider(
+    names_from = phase,
+    values_from = accuracy
+  ) %>%
+  drop_na(baseline, ai_supported) %>%
+  mutate(
+    diff_accuracy = ai_supported - baseline
+  )
+
+h1_data_wide
+############################################################
+# H1: Normalitätsprüfung der Differenzwerte
+############################################################
+
+shapiro.test(h1_data_wide$diff_accuracy)
+
+############################################################
+# H1: Gerichteter t-Test für abhängige Stichproben
+# H1: ai_supported > baseline
+############################################################
+
+h1_ttest <- t.test(
+  h1_data_wide$ai_supported,
+  h1_data_wide$baseline,
+  paired = TRUE,
+  alternative = "greater"
+)
+
+h1_ttest
+
+############################################################
+# H1: Effektstärke Cohen's dz manuell berechnen
+############################################################
+
+cohens_dz_h1 <- mean(h1_data_wide$diff_accuracy, na.rm = TRUE) /
+  sd(h1_data_wide$diff_accuracy, na.rm = TRUE)
+
+cohens_dz_h1
+h1_plot_data <- h1_data_long %>%
+  group_by(phase) %>%
+  summarise(
+    mean_accuracy = mean(accuracy, na.rm = TRUE),
+    se_accuracy = sd(accuracy, na.rm = TRUE) / sqrt(n()),
+    .groups = "drop"
+  )
+############################################################
+# H1: Visualisierung
+############################################################
+ggplot(h1_plot_data, aes(x = phase, y = mean_accuracy)) +
+  geom_col() +
+  geom_errorbar(
+    aes(
+      ymin = mean_accuracy - se_accuracy,
+      ymax = mean_accuracy + se_accuracy
+    ),
+    width = 0.20
+  ) +
+  labs(
+    title = "Mittlere Leistung nach Phase",
+    x = "Phase",
+    y = "Mittlerer Anteil korrekter Antworten"
+  ) +
+  theme_minimal()
+```
 
 ### Zusammenhangshypothese
 
@@ -355,7 +479,137 @@ Es besteht kein positiver Zusammenhang zwischen der wahrgenommenen KI-Genauigkei
 Test: Pearson-Korrelation
 Variable 1: perceived_ai_accuracy
 Variable 2: Trust-Performance-Score als Mittelwert aus ai_trust.PE1, ai_trust.PE2, ai_trust.PE3
+```{r}
+#| label: h2-analyse
+#| echo: true
+#| warning: true
+#| fig-cap: H2 Analyse 
 
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+
+df <- read.csv("lab_merged_data_20260616.csv")
+
+# ggf. anpassen
+id_var <- "participant_id"
+
+############################################################
+# 1. Daten vorbereiten
+############################################################
+
+df_clean <- df %>%
+  filter(method_level == "blur") %>%
+  mutate(
+    correct_button = as.numeric(correct_button),
+    perceived_ai_accuracy = as.numeric(perceived_ai_accuracy),
+    ai_trust.PE1 = as.numeric(ai_trust.PE1),
+    ai_trust.PE2 = as.numeric(ai_trust.PE2),
+    ai_trust.PE3 = as.numeric(ai_trust.PE3)
+  )
+
+############################################################
+# 2. H2: Trust-Performance-Score berechnen
+############################################################
+
+h2_data <- df_clean %>%
+  filter(phase == "ai_supported") %>%
+  mutate(
+    trust_performance = rowMeans(
+      select(
+        .,
+        ai_trust.PE1,
+        ai_trust.PE2,
+        ai_trust.PE3
+      ),
+      na.rm = TRUE
+    )
+  )
+
+############################################################
+# 4. Auf Teilnehmer*innen-Ebene aggregieren
+############################################################
+
+h2_data_person <- h2_data %>%
+  group_by(.data[[id_var]]) %>%
+  summarise(
+    perceived_ai_accuracy = mean(perceived_ai_accuracy, na.rm = TRUE),
+    trust_performance = mean(trust_performance, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  filter(
+    !is.na(perceived_ai_accuracy),
+    !is.na(trust_performance),
+    is.finite(perceived_ai_accuracy),
+    is.finite(trust_performance)
+  )
+
+h2_data_person
+
+############################################################
+# 5. Deskriptive Statistik
+############################################################
+
+h2_descriptives <- h2_data_person %>%
+  summarise(
+    n = n(),
+    mean_perceived_ai_accuracy = mean(perceived_ai_accuracy, na.rm = TRUE),
+    sd_perceived_ai_accuracy = sd(perceived_ai_accuracy, na.rm = TRUE),
+    mean_trust_performance = mean(trust_performance, na.rm = TRUE),
+    sd_trust_performance = sd(trust_performance, na.rm = TRUE),
+    min_perceived_ai_accuracy = min(perceived_ai_accuracy, na.rm = TRUE),
+    max_perceived_ai_accuracy = max(perceived_ai_accuracy, na.rm = TRUE),
+    min_trust_performance = min(trust_performance, na.rm = TRUE),
+    max_trust_performance = max(trust_performance, na.rm = TRUE)
+  )
+
+h2_descriptives
+
+############################################################
+# H2: Normalitätsprüfung
+############################################################
+ shapiro_perceived_ai_accuracy <- shapiro.test(
+    h2_data_person$perceived_ai_accuracy
+  )
+  
+  shapiro_trust_performance <- shapiro.test(
+    h2_data_person$trust_performance
+  )
+  
+  shapiro_perceived_ai_accuracy
+  shapiro_trust_performance
+############################################################
+# H2: Pearson-Korrelation, gerichtet positiv
+############################################################
+
+h2_cor <- cor.test(
+  h2_data_person$perceived_ai_accuracy,
+  h2_data_person$trust_performance,
+  method = "pearson",
+  alternative = "greater"
+)
+
+h2_cor
+
+############################################################
+# H2: Visualisierung
+############################################################
+ggplot(
+  h2_data_person,
+  aes(
+    x = perceived_ai_accuracy,
+    y = trust_performance
+  )
+) +
+  geom_point(alpha = 0.70) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    title = "Zusammenhang zwischen wahrgenommener KI-Genauigkeit und Vertrauen",
+    x = "Wahrgenommene KI-Genauigkeit",
+    y = "Trust-Performance-Score"
+  ) +
+  theme_minimal()
+```
 # Diskussion
 
 Diskussion der Ergebnisse.
