@@ -84,7 +84,7 @@ Alle Gruppenmitglieder verplichten sich zu diesem Code of Conduct.
 
 ## Welche Eigenschaften charakterisieren den wahrgenommenen visuellen Clutter bei SAR-Suchaufgaben?
 
-## Inwiefern unterscheiden sich die KI-Visualisierungsmethoden Bounding Box und Blur hinsichtlich der Leistung in der visuellen Suchaufgabe, und wie hängt die wahrgenommene Genauigkeit des KI-Systems mit dem Vertrauen in das KI-System zusammen?
+## Inwiefern verbessert KI-gestützte Visualisierung mittels Contextual Blur die Leistung bei visuellen SAR-Suchaufgaben im Vergleich zur Baseline-Phase, und wie hängt die wahrgenommene Genauigkeit des KI-Systems mit dem Vertrauen in das System zusammen?
 
 # Literaturübersicht
 
@@ -489,15 +489,9 @@ Variable 1: perceived_ai_accuracy <br>
 Variable 2: Trust-Performance-Score als Mittelwert aus ai_trust.PE1, ai_trust.PE2, ai_trust.PE3
 ```{r}
 #| label: h2-analyse
-# echo: true
-# warning: true
 #| fig-cap: H2 Analyse 
 
 
-
-#df <- read.csv("lab_merged_data_20260616.csv")
-
-# ggf. anpassen
 id_var <- "participant_id"
 
 ############################################################
@@ -550,7 +544,6 @@ h2_data_person <- h2_data %>%
     is.finite(trust_performance)
   )
 
-#h2_data_person
 
 
 ############################################################
@@ -614,8 +607,7 @@ knitr::kable(
   caption = "Shapiro-Wilk für wahrgenommene KI-Genauigkeit und Vertrauen in die KI-Leistung"
 )
 
-  #shapiro_perceived_ai_accuracy
-  #shapiro_trust_performance
+
 ############################################################
 # H2: Pearson-Korrelation, gerichtet positiv
 ############################################################
@@ -684,7 +676,58 @@ ggplot(
     y = "Trust-Performance-Score"
   ) +
   theme_minimal()
+
+# Stichprobenauswertung 
+library(dplyr)
+library(knitr)
+library(tibble)
+
+# Teilnehmer*innen auf Personenebene
+demo_person <- raw_data %>%
+  filter(
+    worker_id %in% valid_ids$Worker.ID,
+    !is.na(group),
+    normalvision == TRUE,
+    age >= 18
+  ) %>%
+  distinct(participant_id, .keep_all = TRUE) %>%
+  mutate(
+    gender = case_when(
+      gender == 0 ~ "m",
+      gender == 1 ~ "w",
+      gender == 2 ~ "d",
+      TRUE ~ as.character(gender)
+    ),
+    visual_search_experience = as.numeric(visual_search_experience)
+  )
+
+# Stichprobengrößen
+n_gesamt <- n_distinct(raw_data$participant_id)
+n_gewertet <- n_distinct(demo_person$participant_id)
+n_ausgeschlossen <- n_gesamt - n_gewertet
+
+# Alter
+age_mean <- mean(demo_person$age, na.rm = TRUE)
+age_sd <- sd(demo_person$age, na.rm = TRUE)
+
+# Geschlecht
+gender_tbl <- demo_person %>%
+  count(gender, name = "n") %>%
+  mutate(pct = 100 * n / sum(n))
+
+# Erfahrung mit Visual Search
+exp_mean <- mean(demo_person$visual_search_experience, na.rm = TRUE)
+exp_sd <- sd(demo_person$visual_search_experience, na.rm = TRUE)
+
+exp_tbl <- demo_person %>%
+  count(visual_search_experience, name = "n") %>%
+  mutate(pct = 100 * n / sum(n))
+
+
+
 ```
+
+
 # Diskussion
 
 Diskussion der Ergebnisse.
