@@ -38,7 +38,7 @@ gefilterte_daten <- raw_data %>%
 ```
 **GitHub Repository:** https://github.com/lenZi101/SMNF2026-GruppeA3
 
-**Für die Abgabe aktueller GitHub Hash:** c0fe0bed7e7d6257a88c9744875d4b8d6829b214
+**Für die Abgabe aktueller GitHub Hash:** 0a87b54421c2c57a1a197fed91c8b281c9c91b0a
 
 ::: {.callout-note collapse="true"}
 # Code of Conduct
