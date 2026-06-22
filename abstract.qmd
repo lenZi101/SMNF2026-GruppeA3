@@ -28,7 +28,7 @@ library(psych)
 library(tidyverse)
 library(dplyr)
 
-raw_data <- read.csv("Daten/lab_merged_data_2026-06-09.csv")
+raw_data <- read.csv("Daten/lab_merged_data_20260616.csv")
 valid_ids <- read.csv("Daten/valid_ids.csv")
 
 gefilterte_daten <- raw_data %>% 
@@ -339,10 +339,6 @@ Die erste Hypothese lautet, dass die Leistung, gemessen als Anteil korrekter Ant
 :Variablen {#tbl-variablen}
 
 \renewcommand{\arraystretch}{1.0} <!-- Resets back to normal -->
-
-
-## Hypothesen
-
 ### Unterschiedshypothese
 ### H1: {.unnumbered}
 
@@ -356,9 +352,23 @@ UV: Phase (phase) mit den Stufen nicht KI-gestützt und KI-gestützt<br>
 AV: Anteil korrekter Antworten pro Teilnehmer*in aus correct_button<br>
 Design: einfaktorielles Within-Subjects-Design innerhalb der Blur-Bedingung<br>
 
+### Zusammenhangshypothese
+
+### H2: {.unnumbered}
+Je höher die wahrgenommene KI-Genauigkeit (perceived_ai_accuracy), desto höher ist das Vertrauen in die Leistung des KI-Systems, gemessen als Mittelwert der Variablen ai_trust.PE1, ai_trust.PE2 und ai_trust.PE3.
+
+Nullhypothese H0₂:
+Es besteht kein positiver Zusammenhang zwischen der wahrgenommenen KI-Genauigkeit (perceived_ai_accuracy) und dem Vertrauen in die Leistung des KI-Systems, gemessen als Mittelwert der Variablen ai_trust.PE1, ai_trust.PE2 und ai_trust.PE3.
+
+Test: Pearson-Korrelation <br>
+Variable 1: perceived_ai_accuracy <br>
+Variable 2: Trust-Performance-Score als Mittelwert aus ai_trust.PE1, ai_trust.PE2, ai_trust.PE3
+
+### Ergebnisse
 ```{r}
 #| label: h1-analyse
 #| fig-cap: H1 Analyse 
+#| include: false
 id_var <- "participant_id"
 ############################################################
 # 1. Daten vorbereiten
@@ -401,11 +411,7 @@ h1_descriptives <- h1_data_long %>%
     .groups = "drop"
   )
 
-knitr::kable(
-  h1_descriptives,
-  digits = 4,
-  caption = "Deskriptive Statistiken für wahrgenommene KI-Genauigkeit und Vertrauen in die KI-Leistung"
-)
+
 ############################################################
 # H1: Daten ins Wide-Format bringen
 ############################################################
@@ -460,7 +466,7 @@ h1_plot_data <- h1_data_long %>%
 # H1: Visualisierung
 ############################################################
 ggplot(h1_plot_data, aes(x = phase, y = mean_accuracy)) +
-  geom_col() +
+  geom_col(fill = "steelblue") +
   geom_errorbar(
     aes(
       ymin = mean_accuracy - se_accuracy,
@@ -475,21 +481,10 @@ ggplot(h1_plot_data, aes(x = phase, y = mean_accuracy)) +
   ) +
   theme_minimal()
 ```
-
-### Zusammenhangshypothese
-
-### H2: {.unnumbered}
-Je höher die wahrgenommene KI-Genauigkeit (perceived_ai_accuracy), desto höher ist das Vertrauen in die Leistung des KI-Systems, gemessen als Mittelwert der Variablen ai_trust.PE1, ai_trust.PE2 und ai_trust.PE3.
-
-Nullhypothese H0₂:
-Es besteht kein positiver Zusammenhang zwischen der wahrgenommenen KI-Genauigkeit (perceived_ai_accuracy) und dem Vertrauen in die Leistung des KI-Systems, gemessen als Mittelwert der Variablen ai_trust.PE1, ai_trust.PE2 und ai_trust.PE3.
-
-Test: Pearson-Korrelation <br>
-Variable 1: perceived_ai_accuracy <br>
-Variable 2: Trust-Performance-Score als Mittelwert aus ai_trust.PE1, ai_trust.PE2, ai_trust.PE3
 ```{r}
 #| label: h2-analyse
-#| fig-cap: H2 Analyse 
+#| fig-cap: H2 Analyse
+#| include: false
 
 
 id_var <- "participant_id"
@@ -676,11 +671,11 @@ ggplot(
     y = "Trust-Performance-Score"
   ) +
   theme_minimal()
-
-# Stichprobenauswertung 
-library(dplyr)
-library(knitr)
-library(tibble)
+```
+```{r}
+#| label: sample-analyse
+#| fig-cap: Stichproben Analyse 
+#| include: false
 
 # Teilnehmer*innen auf Personenebene
 demo_person <- raw_data %>%
@@ -723,10 +718,174 @@ exp_tbl <- demo_person %>%
   count(visual_search_experience, name = "n") %>%
   mutate(pct = 100 * n / sum(n))
 
+```
+## Stichprobe
 
+```{r}
+#| label: tbl-stichprobe
+#| tbl-cap: "Beschreibung der finalen Stichprobe"
+#| echo: false
+#| warning: false
+#| message: false
 
+stichprobe_tbl <- tibble(
+  Merkmal = c(
+    "Finale Stichprobengröße",
+    "Ausgeschlossene Beantwortungen",
+    "Alter",
+    "Erfahrung mit visuellen Suchaufgaben",
+    paste0("Geschlecht: ", gender_tbl$gender)
+  ),
+  Kennwert = c(
+    paste0("N = ", n_gewertet),
+    paste0("n = ", n_ausgeschlossen),
+    paste0("M = ", round(age_mean, 2), ", SD = ", round(age_sd, 2)),
+    paste0("M = ", round(exp_mean, 2), ", SD = ", round(exp_sd, 2)),
+    paste0("n = ", gender_tbl$n, " (", round(gender_tbl$pct, 1), "%)")
+  )
+)
+
+knitr::kable(stichprobe_tbl)
 ```
 
+Die finale Stichprobe bestand aus `r n_gewertet` Teilnehmenden. Insgesamt wurden `r n_ausgeschlossen` Beantwortungen ausgeschlossen, da sie entweder keine zulässige Worker-ID enthielten, unvollständig waren oder die definierten Einschlusskriterien nicht erfüllten. Die zentralen Merkmale der Stichprobe sind in @tbl-stichprobe dargestellt. Die Teilnehmenden erfüllten die grundlegenden Voraussetzungen für die Bearbeitung der visuellen Suchaufgabe, insbesondere hinsichtlich Alter und Sehfähigkeit. Zusätzlich wurde die Erfahrung mit visuellen Suchaufgaben berücksichtigt, da diese für die Bearbeitung der Aufgabe relevant sein kann. Insgesamt eignet sich die Stichprobe zur Untersuchung visueller Suchleistungen in einer kontrollierten Online-Studie. Die Übertragbarkeit auf professionelle Search-and-Rescue-Kontexte ist jedoch eingeschränkt, da nicht davon ausgegangen werden kann, dass die Teilnehmenden über spezifische SAR-Erfahrung verfügen.
+
+Kurz zusammengefasst:
+
+* In die Analyse gingen `r n_gewertet` gültige Beantwortungen ein.
+* `r n_ausgeschlossen` Beantwortungen wurden ausgeschlossen.
+* Ausschlussgründe waren unzulässige Worker-IDs, unvollständige Daten oder nicht erfüllte Einschlusskriterien.
+* Die Stichprobe bestand überwiegend aus jungen Erwachsenen.
+* Als weitere relevante Eigenschaft wurde die Erfahrung mit visuellen Suchaufgaben berücksichtigt.
+* Die Übertragbarkeit auf professionelle SAR-Kontexte ist begrenzt.
+
+### Deskriptive Statistik
+
+```{r}
+#| label: tbl-deskriptiv-h1
+#| tbl-cap: "Deskriptive Statistiken der Leistung nach Phase"
+#| echo: false
+#| warning: false
+#| message: false
+
+knitr::kable(
+  h1_descriptives,
+  digits = 4
+)
+```
+
+```{r}
+#| label: tbl-deskriptiv-h2
+#| tbl-cap: "Deskriptive Statistiken für wahrgenommene KI-Genauigkeit und Vertrauen in die KI-Leistung"
+#| echo: false
+#| warning: false
+#| message: false
+
+knitr::kable(
+  h2_descriptives,
+  digits = 2
+)
+```
+
+Die deskriptiven Statistiken der zentralen Analysevariablen sind in @tbl-deskriptiv-h1 und @tbl-deskriptiv-h2 dargestellt. Für die Unterschiedshypothese wurde die Leistung als Anteil korrekter Antworten pro Teilnehmer*in getrennt nach Phase berechnet. Für die Zusammenhangshypothese wurden die wahrgenommene Genauigkeit des KI-Systems sowie das Vertrauen in die KI-Leistung auf Personenebene ausgewertet. Dadurch wird sichergestellt, dass die Analysen auf der passenden Datenebene durchgeführt werden und jede teilnehmende Person nur einmal in die jeweilige Auswertung eingeht.
+
+### Inferenzstatistik
+
+#### Unterschiedshypothese H1
+
+Die erste Hypothese nahm an, dass die Leistung in der KI-gestützten Phase höher ist als in der nicht KI-gestützten Baseline-Phase. Die Leistung wurde als Anteil korrekter Antworten pro Teilnehmer*in anhand der Variable `correct_button` berechnet. Da beide Phasen von denselben Teilnehmenden bearbeitet wurden, wurde ein gerichteter t-Test für abhängige Stichproben verwendet.
+
+```{r}
+#| label: tbl-h1-test
+#| tbl-cap: "Ergebnis des gerichteten t-Tests für abhängige Stichproben"
+#| echo: false
+#| warning: false
+#| message: false
+
+h1_test_tbl <- tibble(
+  Test = "t-Test für abhängige Stichproben",
+  t = unname(h1_ttest$statistic),
+  df = unname(h1_ttest$parameter),
+  p = h1_ttest$p.value,
+  dz = cohens_dz_h1
+)
+
+knitr::kable(
+  h1_test_tbl,
+  digits = 3
+)
+```
+
+```{r}
+#| label: fig-h1
+#| fig-cap: "Leistung in der Baseline-Phase und in der KI-gestützten Phase"
+#| echo: false
+#| warning: false
+#| message: false
+
+ggplot(h1_data_long, aes(x = phase, y = accuracy)) +
+  geom_violin(trim = FALSE) +
+  geom_boxplot(width = 0.15) +
+  labs(
+    x = "Phase",
+    y = "Anteil korrekter Antworten"
+  ) +
+  theme_minimal()
+```
+
+Die inferenzstatistische Prüfung der Unterschiedshypothese ist in @tbl-h1-test dargestellt. Die Verteilung der Leistung in beiden Phasen ist in @fig-h1 visualisiert. Deskriptiv zeigte sich eine höhere Leistung in der KI-gestützten Phase als in der Baseline-Phase. Der gerichtete t-Test für abhängige Stichproben ergab, dass dieser Unterschied statistisch geprüft werden konnte, *t*(`r round(unname(h1_ttest$parameter), 0)`) = `r round(unname(h1_ttest$statistic), 2)`, *p* = `r round(h1_ttest$p.value, 3)`, *d*~z~ = `r round(cohens_dz_h1, 2)`. Damit spricht das Ergebnis dafür, dass die KI-gestützte Darstellung innerhalb der Blur-Bedingung mit einer höheren Leistung verbunden war.
+
+#### Zusammenhangshypothese H2
+
+Die zweite Hypothese nahm an, dass eine höhere wahrgenommene KI-Genauigkeit mit einem höheren Vertrauen in die Leistung des KI-Systems zusammenhängt. Das Vertrauen wurde als Mittelwert der drei Trust-Performance-Items `ai_trust.PE1`, `ai_trust.PE2` und `ai_trust.PE3` berechnet. Der Zusammenhang wurde mit einer gerichteten Pearson-Korrelation geprüft.
+
+```{r}
+#| label: tbl-h2-test
+#| tbl-cap: "Korrelationsanalyse zwischen wahrgenommener KI-Genauigkeit und Vertrauen in die KI-Leistung"
+#| echo: false
+#| warning: false
+#| message: false
+
+h2_test_tbl <- tibble(
+  Test = "Pearson-Korrelation",
+  r = unname(h2_cor$estimate),
+  t = unname(h2_cor$statistic),
+  df = unname(h2_cor$parameter),
+  p = h2_cor$p.value,
+  CI_unten = h2_cor$conf.int[1],
+  CI_oben = h2_cor$conf.int[2]
+)
+
+knitr::kable(
+  h2_test_tbl,
+  digits = 3
+)
+```
+
+```{r}
+#| label: fig-h2
+#| fig-cap: "Zusammenhang zwischen wahrgenommener KI-Genauigkeit und Vertrauen in die KI-Leistung"
+#| echo: false
+#| warning: false
+#| message: false
+
+ggplot(
+  h2_data_person,
+  aes(
+    x = perceived_ai_accuracy,
+    y = trust_performance
+  )
+) +
+  geom_point(alpha = 0.70) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    x = "Wahrgenommene KI-Genauigkeit",
+    y = "Vertrauen in die KI-Leistung"
+  ) +
+  theme_minimal()
+```
+
+Die Ergebnisse der Korrelationsanalyse sind in @tbl-h2-test dargestellt. Der Zusammenhang zwischen wahrgenommener KI-Genauigkeit und Vertrauen in die KI-Leistung ist in @fig-h2 visualisiert. Es zeigte sich ein positiver Zusammenhang zwischen beiden Variablen, *r*(`r round(unname(h2_cor$parameter), 0)`) = `r round(unname(h2_cor$estimate), 2)`, *p* = `r round(h2_cor$p.value, 3)`. Teilnehmende, die die KI als genauer einschätzten, berichteten somit tendenziell auch ein höheres Vertrauen in die Leistung des KI-Systems. Dieses Ergebnis unterstützt die Annahme, dass subjektive Genauigkeitseinschätzungen mit dem Vertrauen in KI-gestützte Suchsysteme zusammenhängen.
 
 # Diskussion
 
