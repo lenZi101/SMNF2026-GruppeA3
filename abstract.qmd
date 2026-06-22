@@ -10,13 +10,32 @@ date: today
 format:
   html: 
    css: style.css
+   df-print: kable
   pdf:
     papersize: A4
     fontsize: 12pt
 number-sections: true
-tbl-cap-location: bottom
+cap-location: bottom
+execute:
+    echo: false
+    warning: false
+    error: false
 ---
 
+```{r setup}
+library(knitr)
+library(psych)
+library(tidyverse)
+library(dplyr)
+
+raw_data <- read.csv("Daten/lab_merged_data_2026-06-09.csv")
+valid_ids <- read.csv("Daten/valid_ids.csv")
+
+gefilterte_daten <- raw_data %>% 
+  filter(worker_id %in% valid_ids$Worker.ID,
+    !is.na(group), normalvision == TRUE, age >= 18)
+
+```
 **GitHub Repository:** https://github.com/lenZi101/SMNF2026-GruppeA3
 
 **Für die Abgabe aktueller GitHub Hash:** c0fe0bed7e7d6257a88c9744875d4b8d6829b214
@@ -104,11 +123,10 @@ Zur Führung durch das Interview und der Präsentation der Bilder und Aufgaben w
 
 ```{r}
 #| label: fig-exp
-#| echo: false
-#| warning: false
+# echo: false
+# warning: false
 #| fig-cap: Erfahrungslevel
 
-library(ggplot2)
 exp_lvls <- c(0,0,1)
 # Namen der Levels
 exp_names <- c(
@@ -140,8 +158,6 @@ ggplot(exp_data, aes(x = Erfahrung)) +
 
 ```{r}
 #| label: fig-sex
-#| echo: false
-#| warning: false
 #| fig-cap: Geschlechtssverteilung
 
 library(ggplot2)
@@ -192,8 +208,8 @@ Zusätzlich zeigte sich, dass Teilnehmende Bildbereiche häufig nicht nur anhand
 ### Aufgaben Ergebnisse
 ```{r}
 #| label: fig-pic-ranks
-#| echo: false
-#| warning: false
+# echo: false
+# warning: false
 #| fig-cap: Bild Unübersichtlichkeit
 
 library(ggplot2)
@@ -231,12 +247,8 @@ Die Ergebnisse deuten darauf hin, dass die Wahrnehmung von Clutter nicht ausschl
 
 ```{r}
 #| label: fig-card-Sort
-#| echo: false
-#| warning: false
 #| fig-cap: Durchschnittliche Karten Reihenfolge
 
-library(ggplot2)
-library(tidyverse)
 
 A3_1 <- c(6,4,7,1,5,3,2)
 #A3_2 <- c(3,5,6,4,2,7,1)
@@ -280,7 +292,7 @@ Um den Einfluss verschiedener KI-Visualisierungsmethoden auf die Bearbeitung vis
 
 Die Studie wird online durchgeführt und besteht aus mehreren aufeinanderfolgenden Phasen. Zu Beginn erhalten die Teilnehmenden Informationen zur Studie und geben ihre Einwilligung zur Teilnahme. Anschließend werden die Einschluss- und Ausschlusskriterien geprüft. Teilnehmen können Personen ab 18 Jahren mit normalem oder korrigiert normalem Sehvermögen. Ausgeschlossen werden Personen mit Farbfehlsichtigkeit. Da die Aufgabe auf der visuellen Beurteilung von Bildern basiert, ist außerdem ein ausreichend großer Bildschirm mit einer Mindestgröße von etwa 13 Zoll erforderlich. Der Ablauf der Studie ist in @fig-study-flow dargestellt.
 
-
+{{< pagebreak >}}
 ```{mermaid}
 %%| label: fig-study-flow
 %%| fig-cap: "Ablauf der quantitativen Online-Studie."
@@ -339,28 +351,20 @@ Die Leistung, gemessen als Anteil korrekter Antworten pro Teilnehmer*in anhand d
 Nullhypothese H0₁:
 Die Leistung, gemessen als Anteil korrekter Antworten pro Teilnehmer*in anhand der Variable correct_button, unterscheidet sich nicht zwischen der KI-gestützten Phase (phase = ai_supported) und der nicht KI-gestützten Phase (phase = baseline) innerhalb der Blur-Bedingung (method_level = blur).
 
-Test: t-Test für abhängige Stichproben
-UV: Phase (phase) mit den Stufen nicht KI-gestützt und KI-gestützt
-AV: Anteil korrekter Antworten pro Teilnehmer*in aus correct_button
-Design: einfaktorielles Within-Subjects-Design innerhalb der Blur-Bedingung
+Test: t-Test für abhängige Stichproben<br>
+UV: Phase (phase) mit den Stufen nicht KI-gestützt und KI-gestützt<br>
+AV: Anteil korrekter Antworten pro Teilnehmer*in aus correct_button<br>
+Design: einfaktorielles Within-Subjects-Design innerhalb der Blur-Bedingung<br>
 
 ```{r}
 #| label: h1-analyse
-#| echo: true
-#| warning: true
 #| fig-cap: H1 Analyse 
-
-
-library(tidyverse)
-library(dplyr)
-library(ggplot2)
-df <- read.csv("lab_merged_data_20260616.csv")
 id_var <- "participant_id"
 ############################################################
 # 1. Daten vorbereiten
 ############################################################
 
-df_clean <- df %>%
+df_clean <- gefilterte_daten %>%
   filter(method_level == "blur") %>%
   mutate(
     correct_button = as.numeric(correct_button),
@@ -397,7 +401,11 @@ h1_descriptives <- h1_data_long %>%
     .groups = "drop"
   )
 
-h1_descriptives
+knitr::kable(
+  h1_descriptives,
+  digits = 4,
+  caption = "Deskriptive Statistiken für wahrgenommene KI-Genauigkeit und Vertrauen in die KI-Leistung"
+)
 ############################################################
 # H1: Daten ins Wide-Format bringen
 ############################################################
@@ -476,20 +484,18 @@ Je höher die wahrgenommene KI-Genauigkeit (perceived_ai_accuracy), desto höher
 Nullhypothese H0₂:
 Es besteht kein positiver Zusammenhang zwischen der wahrgenommenen KI-Genauigkeit (perceived_ai_accuracy) und dem Vertrauen in die Leistung des KI-Systems, gemessen als Mittelwert der Variablen ai_trust.PE1, ai_trust.PE2 und ai_trust.PE3.
 
-Test: Pearson-Korrelation
-Variable 1: perceived_ai_accuracy
+Test: Pearson-Korrelation <br>
+Variable 1: perceived_ai_accuracy <br>
 Variable 2: Trust-Performance-Score als Mittelwert aus ai_trust.PE1, ai_trust.PE2, ai_trust.PE3
 ```{r}
 #| label: h2-analyse
-#| echo: true
-#| warning: true
+# echo: true
+# warning: true
 #| fig-cap: H2 Analyse 
 
-library(tidyverse)
-library(dplyr)
-library(ggplot2)
 
-df <- read.csv("lab_merged_data_20260616.csv")
+
+#df <- read.csv("lab_merged_data_20260616.csv")
 
 # ggf. anpassen
 id_var <- "participant_id"
@@ -498,7 +504,7 @@ id_var <- "participant_id"
 # 1. Daten vorbereiten
 ############################################################
 
-df_clean <- df %>%
+df_clean <- gefilterte_daten %>%
   filter(method_level == "blur") %>%
   mutate(
     correct_button = as.numeric(correct_button),
@@ -544,31 +550,45 @@ h2_data_person <- h2_data %>%
     is.finite(trust_performance)
   )
 
-h2_data_person
+#h2_data_person
+
 
 ############################################################
 # 5. Deskriptive Statistik
 ############################################################
 
-h2_descriptives <- h2_data_person %>%
-  summarise(
-    n = n(),
-    mean_perceived_ai_accuracy = mean(perceived_ai_accuracy, na.rm = TRUE),
-    sd_perceived_ai_accuracy = sd(perceived_ai_accuracy, na.rm = TRUE),
-    mean_trust_performance = mean(trust_performance, na.rm = TRUE),
-    sd_trust_performance = sd(trust_performance, na.rm = TRUE),
-    min_perceived_ai_accuracy = min(perceived_ai_accuracy, na.rm = TRUE),
-    max_perceived_ai_accuracy = max(perceived_ai_accuracy, na.rm = TRUE),
-    min_trust_performance = min(trust_performance, na.rm = TRUE),
-    max_trust_performance = max(trust_performance, na.rm = TRUE)
+h2_descriptives <- tibble(
+  Variable = c("Perceived AI Accuracy",
+               "Trust in AI Performance"),
+  Mean = c(
+    mean(h2_data_person$perceived_ai_accuracy, na.rm = TRUE),
+    mean(h2_data_person$trust_performance, na.rm = TRUE)
+  ),
+  SD = c(
+    sd(h2_data_person$perceived_ai_accuracy, na.rm = TRUE),
+    sd(h2_data_person$trust_performance, na.rm = TRUE)
+  ),
+  Min = c(
+    min(h2_data_person$perceived_ai_accuracy, na.rm = TRUE),
+    min(h2_data_person$trust_performance, na.rm = TRUE)
+  ),
+  Max = c(
+    max(h2_data_person$perceived_ai_accuracy, na.rm = TRUE),
+    max(h2_data_person$trust_performance, na.rm = TRUE)
   )
+)
+knitr::kable(
+  h2_descriptives,
+  digits = 2,
+  caption = "Deskriptive Statistiken für wahrgenommene KI-Genauigkeit und Vertrauen in die KI-Leistung"
+)
 
-h2_descriptives
 
 ############################################################
 # H2: Normalitätsprüfung
 ############################################################
- shapiro_perceived_ai_accuracy <- shapiro.test(
+ 
+  shapiro_perceived_ai_accuracy <- shapiro.test(
     h2_data_person$perceived_ai_accuracy
   )
   
@@ -576,8 +596,26 @@ h2_descriptives
     h2_data_person$trust_performance
   )
   
-  shapiro_perceived_ai_accuracy
-  shapiro_trust_performance
+results_shapiro <- tibble(
+  Variable = c("Perceived AI Accuracy",
+               "Trust in AI Performance"),
+  W = c(
+    shapiro_perceived_ai_accuracy$statistic,
+    shapiro_trust_performance$statistic
+  ),
+  pvalue = c(
+    shapiro_perceived_ai_accuracy$p.value,
+    shapiro_trust_performance$p.value
+  )
+)
+knitr::kable(
+  results_shapiro,
+  digits = 4,
+  caption = "Shapiro-Wilk für wahrgenommene KI-Genauigkeit und Vertrauen in die KI-Leistung"
+)
+
+  #shapiro_perceived_ai_accuracy
+  #shapiro_trust_performance
 ############################################################
 # H2: Pearson-Korrelation, gerichtet positiv
 ############################################################
@@ -589,7 +627,44 @@ h2_cor <- cor.test(
   alternative = "greater"
 )
 
-h2_cor
+
+library(knitr)
+
+cor_test <- cor.test(
+
+  h2_data_person$perceived_ai_accuracy,
+
+  h2_data_person$trust_performance,
+
+  alternative = "greater"
+
+)
+
+cor_results <- data.frame(
+
+  Test = "Pearson correlation",
+
+  r = unname(cor_test$estimate),
+
+  t = unname(cor_test$statistic),
+
+  df = unname(cor_test$parameter),
+
+  p_value = cor_test$p.value,
+
+  CI_lower = cor_test$conf.int[1],
+
+  CI_upper = cor_test$conf.int[2]
+
+)
+
+kable(
+  cor_results,
+  digits = 3,
+  caption = "Korrelationsanalyse zwischen wahrgenommener KI-Genauigkeit und Vertrauen in die KI"
+)
+
+
 
 ############################################################
 # H2: Visualisierung
